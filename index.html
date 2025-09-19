@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+    <style>
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #7f5af0, #a777e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+</style>
+
     
 <head>
     <meta charset="UTF-8">
@@ -1209,33 +1220,34 @@
 </head>
 <body>
     <!-- ============================================== -->
-    <!-- SECTION HERO/ACCUEIL AMÉLIORÉE -->
-    <!-- ============================================== -->
-    <section id="hero">
-        <!-- Effet de particules animées -->
-        <div class="particles" id="particles"></div>
+<!-- SECTION HERO/ACCUEIL AMÉLIORÉE -->
+<!-- ============================================== -->
+
+<section id="hero">
+    <!-- Effet de particules animées -->
+    <div class="particles" id="particles"></div>
+    
+    <div class="container hero-content">
+        <span class="hero-badge"><i class="fas fa-chart-line"></i> Data Analyst</span>
         
-        <div class="container hero-content">
-            <span class="hero-badge"><i class="fas fa-chart-line"></i> Data Analyst</span>
-            <h1 class="hero-title">
-                <span class="typewriter">Moussa <span>Sissoko</span></span>
-            </h1>
-            <h2 class="hero-subtitle">
-                <span class="typewriter typewriter-delay">Economics & Finance | Data Science</span>
-            </h2>
-            <p class="hero-description">
-                Je suis le Data Analyst qu'il vous faut pour transformer vos données
-                brutes en stratégies gagnantes.
-                Expert en analyse statistique et passionné par la data visualisation,
-                je maîtrise Python, R, SQL,
-                Tableau et Power BI pour donner du sens à l'information et créer de la valeur actionable.
-            </p>
-            <!-- Boutons d'action principaux -->
-            <div class="hero-buttons">
-                <a href="https://documentviewer.herokuapp.com/?state=%7B%22ids%22:%5B%221KAIVypOyIPK8tY64jWpK8maQYb5ehF25%22%5D,%22action%22:%22open%22,%22userId极2:%22116478983020576888382%22,%22resourceKeys%22:%7B%7D%7D" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger mon CV</a>
-                <a href="#projects" class="btn btn-outline"><i class="fas fa-briefcase"></i> Voir mes projets</a>
-            </div>
-            
+        <!-- Ici on enlève Moussa Sissoko et on met seulement les mots-clés -->
+        <h1 class="hero-title">
+            <span id="animated-keywords"></span>
+        </h1>
+        <p class="hero-description">
+            Je suis le Data Analyst qu'il vous faut pour transformer vos données
+            brutes en stratégies gagnantes.
+            Expert en analyse statistique et passionné par la data visualisation,
+            je maîtrise Python, R, SQL,
+            Tableau et Power BI pour donner du sens à l'information et créer de la valeur actionable.
+        </p>
+        <!-- Boutons d'action principaux -->
+        <div class="hero-buttons">
+            <a href="https://drive.google.com/file/d/1KAIVypOyIPK8tY64jWpK8maQYb5ehF25/view?usp=drive_link" class="btn btn-primary"><i class="fas fa-download"></i> Télécharger mon CV</a>
+            <a href="#projects" class="btn btn-outline"><i class="fas fa-briefcase"></i> Voir mes projets</a>
+        </div>
+    
+
             
         </div>
     </section>
@@ -1509,7 +1521,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-date">En cours</div>
-                        <h3 class="极eline-title">Apprenti Data Analyst </h3>
+                        <h3 class="极eline-title">Apprenti Data Analytics & Engineer </h3>
                         <div class="timeline-company">Ministère de l’Économie, des Finances et de la Souveraineté industrielle et numérique </div>
                         <p class="timeline-description">
                         
@@ -1709,21 +1721,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Votre email" required>
-                        </极>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Sujet" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Votre message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Envoyer le message</button>
-                    </form>
+  <form action="https://formspree.io/f/xkgvdjbg" method="POST">
+    <input type="text" name="name" required placeholder="Votre nom" class="form-control">
+    <input type="email" name="email" required placeholder="Votre email" class="form-control">
+    <input type="text" name="subject" required placeholder="Sujet" class="form-control">
+    <textarea name="message" required placeholder="Votre message" class="form-control"></textarea>
+    <button type="submit" class="submit-btn">Envoyer le message</button>
+  </form>
+</div>
+
                 </div>
             </div>
         </div>
@@ -1745,76 +1751,130 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ul>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Moussa Sissoko. Tous droits réservés.</p>
+                <p>&copy; 2025 Moussa Sissoko. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scroll to top button -->
-    <div class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
+<div class="scroll-top" id="scrollTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
 
-    <script>
-        // Menu toggle functionality
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Scroll to top functionality
-        const scrollTop = document.getElementById('scrollTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTop.classList.add('active');
-            } else {
-                scrollTop.classList.remove('active');
-            }
-        });
-        
-        scrollTop.addEventListener('click', () => {
+<script>
+// Menu toggle functionality
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking on a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
+// Scroll to top functionality
+const scrollTop = document.getElementById('scrollTop');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        scrollTop.classList.add('active');
+    } else {
+        scrollTop.classList.remove('active');
+    }
+});
+
+scrollTop.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
             window.scrollTo({
-                top: 0,
+                top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
-        });
-        
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Merci pour votre message ! Je vous répondrai dès que possible.');
-            contactForm.reset();
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+        }
+    });
+});
+</script>
+
+<script>
+// Liste de mots-clés à afficher aléatoirement
+const keywords = [
+  "Data Science",
+  "Machine Learning",
+  "Big Data",
+  "Statistiques",
+  "Visualisation",
+  "Python",
+  "R",
+  "SQL",
+  "Power BI",
+  "Modélisation",
+  "Prévisions",
+  "Tableaux de bord",
+  "Exploration de données",
+  "Business Intelligence",
+  "Data Engineering",
+  "Cloud",
+  "IA générative",
+  "Automatisation",
+  "APIs",
+  "Dashboards"
+];
+
+let current = 0;
+const animated = document.getElementById("animated-keywords");
+
+function typeWriter(word, i = 0) {
+    if (i <= word.length) {
+        animated.innerHTML = word.slice(0, i) + '<span class="blinking-cursor">|</span>';
+        setTimeout(() => typeWriter(word, i + 1), 60);
+    } else {
+        setTimeout(() => eraseWriter(word), 1200);
+    }
+}
+
+function eraseWriter(word, i = word.length) {
+    if (i >= 0) {
+        animated.innerHTML = word.slice(0, i) + '<span class="blinking-cursor">|</span>';
+        setTimeout(() => eraseWriter(word, i - 1), 28);
+    } else {
+        // Choisir le mot suivant de façon aléatoire mais différente
+        let next;
+        do { next = Math.floor(Math.random() * keywords.length); }
+        while (next === current);
+        current = next;
+        typeWriter(keywords[current]);
+    }
+}
+
+// Style du curseur clignotant
+const style = document.createElement('style');
+style.innerHTML = `.blinking-cursor { font-weight: 400; color: #a777e3; animation: blink 1s step-end infinite;}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }`;
+document.head.appendChild(style);
+
+document.addEventListener("DOMContentLoaded", () => {
+    typeWriter(keywords[current]);
+});
+</script>
+
 </body>
 </html>
