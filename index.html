@@ -107,10 +107,21 @@
             align-items: center;
         }
 
+        /* --- MODIFICATION LOGO --- */
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--text);
+            /* Flex pour aligner icône et texte */
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            color: var(--accent);
+            font-size: 1.8rem;
+            transform: translateY(-1px);
         }
 
         .logo-accent { color: var(--accent); }
@@ -552,7 +563,10 @@
 
     <nav>
         <div class="container nav-container">
-            <a href="#" class="logo">Moussa The Data Explorer <span class="logo-accent">.</span></a>
+            <a href="#" class="logo">
+                <i class="fas fa-chart-column logo-icon"></i>
+                Moussa The Data Explorer <span class="logo-accent">.</span>
+            </a>
             
             <div class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
