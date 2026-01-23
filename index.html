@@ -23,7 +23,7 @@
             --text: #f5f5f5;
             --text-secondary: #a0a0b0;
             --border: #2a2a3a;
-            --transition: all 0.3s ease;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animation plus fluide "Pro" */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -89,16 +89,24 @@
         }
 
         /* ============================ */
-        /* NAVIGATION */
+        /* NAVIGATION "PRO" STYLE */
         /* ============================ */
         nav {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background: rgba(10, 10, 20, 0.95);
-            backdrop-filter: blur(10px);
+            background: transparent; /* Transparent au début */
             z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        /* Effet au scroll via JS */
+        nav.scrolled {
+            background: rgba(10, 10, 20, 0.85);
+            backdrop-filter: blur(12px); /* Effet verre dépoli */
             padding: 15px 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
         }
 
         .nav-container {
@@ -107,66 +115,154 @@
             align-items: center;
         }
 
-        /* --- MODIFICATION LOGO --- */
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--text);
-            /* Flex pour aligner icône et texte */
             display: flex;
             align-items: center;
             gap: 12px;
+            z-index: 1002; /* Au-dessus du menu mobile */
+            position: relative;
         }
 
         .logo-icon {
             color: var(--accent);
-            font-size: 1.8rem;
-            transform: translateY(-1px);
+            font-size: 1.6rem;
         }
 
-        .logo-accent { color: var(--accent); }
+        /* Conteneur desktop (caché sur mobile) */
+        .nav-menu-desktop {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
 
         .nav-links { display: flex; gap: 30px; }
         
         .nav-links a {
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: var(--transition);
             position: relative;
+            opacity: 0.8;
         }
 
-        .nav-links a:hover { color: var(--accent-light); }
+        .nav-links a:hover, .nav-links a.active { 
+            color: white; 
+            opacity: 1; 
+        }
         
+        /* Indicateur animé sous les liens */
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px; left: 0;
+            bottom: -5px; left: 50%;
             width: 0; height: 2px;
-            background: var(--accent-light);
-            transition: width 0.3s;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
         }
         
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
         .nav-icons { display: flex; gap: 15px; }
         
         .nav-icons a {
             width: 36px; height: 36px;
             border-radius: 50%;
-            background: var(--card-bg);
-            color: var(--accent-light);
+            background: rgba(255,255,255,0.05);
+            color: var(--text);
             display: flex; align-items: center; justify-content: center;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.1);
             transition: var(--transition);
         }
 
         .nav-icons a:hover {
             background: var(--accent);
+            border-color: var(--accent);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+        /* Burger Menu "Pro" */
+        .menu-toggle { 
+            display: none; 
+            cursor: pointer; 
+            z-index: 1002;
+            width: 30px;
+            height: 20px;
+            position: relative;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--text);
+            position: absolute;
+            transition: var(--transition);
+        }
+
+        .menu-toggle span:nth-child(1) { top: 0; }
+        .menu-toggle span:nth-child(2) { top: 9px; }
+        .menu-toggle span:nth-child(3) { top: 18px; }
+
+        /* Animation Burger -> Croix */
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg); top: 9px; }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg); top: 9px; }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--darker-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease-in-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav-links {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .mobile-nav-links a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .mobile-menu-overlay.active .mobile-nav-links a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Décalage d'apparition pour effet cascade */
+        .mobile-menu-overlay.active .mobile-nav-links a:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu-overlay.active .mobile-nav-links a:nth-child(2) { transition-delay: 0.2s; }
+        .mobile-menu-overlay.active .mobile-nav-links a:nth-child(3) { transition-delay: 0.3s; }
+        .mobile-menu-overlay.active .mobile-nav-links a:nth-child(4) { transition-delay: 0.4s; }
+        .mobile-menu-overlay.active .mobile-nav-links a:nth-child(5) { transition-delay: 0.5s; }
+
 
         /* ============================ */
         /* HERO SECTION */
@@ -273,7 +369,6 @@
             border-color: var(--accent-light);
         }
 
-        /* Curseur clignotant */
         .blinking-cursor {
             color: var(--accent);
             animation: blink 1s step-end infinite;
@@ -478,6 +573,7 @@
             border-radius: 8px;
             color: var(--text);
             font-family: inherit;
+            transition: var(--transition);
         }
 
         .form-control:focus {
@@ -533,21 +629,16 @@
         }
 
         @media (max-width: 768px) {
+            /* On cache le menu desktop et on montre le burger */
+            .nav-menu-desktop { display: none; }
             .menu-toggle { display: block; }
             
-            .nav-links {
-                position: fixed;
-                top: 70px; left: -100%;
-                width: 100%; height: calc(100vh - 70px);
-                background: var(--dark-bg);
-                flex-direction: column;
-                align-items: center; justify-content: center;
-                transition: 0.4s;
-            }
+            /* Ajustement Logo Mobile */
+            .logo { font-size: 1.1rem; }
+            .logo-icon { font-size: 1.4rem; }
             
-            .nav-links.active { left: 0; }
-            
-            .hero-title { font-size: 2.2rem; }
+            /* Ajustements typographiques mobile */
+            .hero-title { font-size: 2rem; }
             
             .timeline::before { left: 30px; }
             .timeline-item { width: 100%; padding-left: 60px; padding-right: 0; text-align: left; }
@@ -561,31 +652,48 @@
 </head>
 <body>
 
-    <nav>
+    <nav id="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
                 <i class="fas fa-chart-column logo-icon"></i>
                 Moussa The Data Explorer <span class="logo-accent">.</span>
             </a>
             
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
+            <div class="nav-menu-desktop">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="active">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#experience">Parcours</a></li>
+                    <li><a href="#projects">Projets</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <ul class="nav-icons">
+                    <li><a href="https://www.linkedin.com/in/moussa-sissoko-data-science/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://github.com/SORADATA" target="_blank"><i class="fab fa-github"></i></a></li>
+                </ul>
             </div>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#hero">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#experience">Parcours</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            
-            <ul class="nav-icons">
-                <li><a href="https://www.linkedin.com/in/moussa-sissoko-data-science/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="https://github.com/SORADATA" target="_blank"><i class="fab fa-github"></i></a></li>
-            </ul>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-nav-links">
+            <a href="#hero">Accueil</a>
+            <a href="#about">À propos</a>
+            <a href="#experience">Parcours</a>
+            <a href="#projects">Projets</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-icons" style="margin-top: 20px;">
+            <a href="https://www.linkedin.com/in/moussa-sissoko-data-science/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/SORADATA" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
 
     <section id="hero">
         <div class="particles" id="particles"></div>
@@ -864,7 +972,7 @@
 
     <footer>
         <div class="container">
-            <div class="logo">Moussa The Data Explorer  <span class="logo-accent">.</span></div>
+            <div class="logo" style="justify-content: center;">Moussa The Data Explorer  <span class="logo-accent">.</span></div>
             <ul class="footer-links">
                 <li><a href="#hero">Accueil</a></li>
                 <li><a href="#projects">Projets</a></li>
@@ -879,22 +987,41 @@
     </div>
 
     <script>
-        // 1. Gestion du Menu Mobile
+        // 1. Gestion du Menu Mobile avec Animation
         const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            
+            // Bloquer le scroll quand le menu est ouvert
+            if(mobileMenuOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
 
         // Fermer le menu au clic d'un lien
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
         });
 
-        // 2. Bouton Retour en haut
+        // 2. Navbar Glassmorphism Effect on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 3. Bouton Retour en haut
         const scrollTop = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
             scrollTop.classList.toggle('active', window.scrollY > 300);
@@ -903,10 +1030,10 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // 3. Animation Machine à écrire (Hero)
+        // 4. Animation Machine à écrire (Hero)
         const keywords = [
             "Data Science", "Machine Learning", "Big Data", "Power BI", 
-            "Python & R","Airflow", "Apache Superset", "SQL", "Visualisation", "Business Intelligence", "Econométries : temporelle, spatiale, panel"
+            "Python & R","Airflow", "Apache Superset", "SQL", "Visualisation", "Business Intelligence"
         ];
         let currentWordIndex = 0;
         const animatedElement = document.getElementById("animated-keywords");
@@ -916,7 +1043,7 @@
                 animatedElement.innerHTML = word.slice(0, i) + '<span class="blinking-cursor">|</span>';
                 setTimeout(() => typeWriter(word, i + 1), 100);
             } else {
-                setTimeout(() => eraseWriter(word), 2000); // Pause avant d'effacer
+                setTimeout(() => eraseWriter(word), 2000);
             }
         }
 
@@ -930,34 +1057,29 @@
             }
         }
 
-        // Lancer l'animation
         document.addEventListener("DOMContentLoaded", () => {
             typeWriter(keywords[0]);
         });
 
-        // 4. Animation des Particules
+        // 5. Particules
         const particlesContainer = document.getElementById('particles');
-        const particleCount = 20; // Nombre de particules
+        const particleCount = 20;
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
-            
-            // Propriétés aléatoires
             const size = Math.random() * 5 + 2;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${Math.random() * 100}vw`;
-            particle.style.top = `${Math.random() * 100}vh`;
-            particle.style.animationDuration = `${Math.random() * 20 + 10}s`;
-            particle.style.animationDelay = `${Math.random() * 5}s`;
-            
+            particle.style.width = ${size}px;
+            particle.style.height = ${size}px;
+            particle.style.left = ${Math.random() * 100}vw;
+            particle.style.top = ${Math.random() * 100}vh;
+            particle.style.animationDuration = ${Math.random() * 20 + 10}s;
+            particle.style.animationDelay = ${Math.random() * 5}s;
             particlesContainer.appendChild(particle);
         }
 
-        // 5. Animation d'apparition au scroll (Intersection Observer)
+        // 6. Reveal on Scroll
         const revealElements = document.querySelectorAll('.reveal');
-        
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -965,21 +1087,18 @@
                 }
             });
         }, { threshold: 0.1 });
-
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // 6. Animation des compteurs (seulement quand visible)
+        // 7. Compteurs
         const counters = document.querySelectorAll('.stat-number');
         let hasCounted = false;
-
         const counterObserver = new IntersectionObserver((entries) => {
             if(entries[0].isIntersecting && !hasCounted) {
                 hasCounted = true;
                 counters.forEach(counter => {
                     const target = +counter.getAttribute('data-target');
-                    const duration = 2000; // ms
+                    const duration = 2000;
                     const increment = target / (duration / 20);
-                    
                     let current = 0;
                     const updateCount = () => {
                         current += increment;
@@ -994,9 +1113,30 @@
                 });
             }
         });
-
         const statsSection = document.querySelector('.profile-stats');
         if(statsSection) counterObserver.observe(statsSection);
+
+        // 8. Active Link on Scroll (ScrollSpy)
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLi.forEach(a => {
+                a.classList.remove('active');
+                if(a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
 
     </script>
 </body>
