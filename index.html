@@ -1,638 +1,243 @@
-<html lang="fr" class="scroll-smooth"><head>
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Moussa Sissoko, Data Analyst spécialisé en économie, finance et machine learning.">
-    <title>Moussa SISSOKO | Data Analyst</title>
+    <title>Moussa SISSOKO | Data Analyst & Engineer</title>
     
-    <!-- Fonts: Inter for the clean Tech look & JetBrains Mono for code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        dark: '#050507',
+                        card: '#0A0A0C',
+                        accent: '#6366f1'
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #030305;
-            cursor: default;
-        }
+        body { background-color: #050507; color: #94a3b8; }
         
-        .font-mono {
-            font-family: 'JetBrains Mono', monospace;
+        /* Noise Texture subtile */
+        .bg-noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 50; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* Subtle Grid Background */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-        }
-
-        /* Animations */
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
         
-        /* Custom Selection */
-        ::selection {
-            background: rgba(99, 102, 241, 0.2);
-            color: #fff;
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #818cf8, #c084fc, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 5s linear infinite;
         }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #030305;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #222;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #333;
-        }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
     </style>
-<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style><link id="all-fonts-link-font-cormorant" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-cormorant">.font-cormorant { font-family: 'Cormorant Garamond', serif !important; }</style></head>
-<body class="text-slate-400 antialiased relative overflow-x-hidden selection:bg-indigo-500/30 selection:text-indigo-200">
+</head>
+<body class="antialiased relative selection:bg-indigo-500/30 selection:text-indigo-200">
 
-    <!-- Background Ambience -->
-    <div class="fixed inset-0 z-0 bg-[#030305]"></div>
-    <div class="fixed inset-0 z-0 bg-grid opacity-50"></div>
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-900/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+    <div class="bg-noise"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl">
-        <div class="relative bg-[#0a0a0a]/70 backdrop-blur-xl border border-white/[0.08] rounded-full px-5 py-3 flex items-center justify-between shadow-2xl shadow-black/50 transition-all duration-300 hover:border-white/[0.12]">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-2.5 group">
-                <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-600 flex items-center justify-center text-white group-hover:scale-105 transition-transform duration-300 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
-                    <span class="font-semibold text-xs tracking-tighter">MDE</span>
-                </div>
-                <span class="text-slate-200 font-medium tracking-tight text-sm hidden sm:block group-hover:text-white transition-colors">Moussa<span class="text-indigo-400"> The Data Explorer </span></span>
-            </a>
+    <div class="fixed top-0 left-0 w-[800px] h-[600px] bg-indigo-900/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-            <!-- Desktop Menu -->
-            <ul class="hidden md:flex items-center gap-1">
-                <li><a href="#hero" class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] rounded-full transition-all">Accueil</a></li>
-                <li><a href="#about" class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] rounded-full transition-all">À propos</a></li>
-                <li><a href="#experience" class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] rounded-full transition-all">Parcours</a></li>
-                <li><a href="#projects" class="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] rounded-full transition-all">Projets</a></li>
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-auto">
+        <div class="bg-white/[0.03] backdrop-blur-md border border-white/[0.08] rounded-full px-8 py-3 flex items-center gap-8 shadow-2xl">
+            <a href="#" class="font-bold text-white tracking-tight">Moussa<span class="text-indigo-500">.</span></a>
+            <ul class="flex items-center gap-6 text-sm font-medium hidden sm:flex">
+                <li><a href="#about" class="text-slate-400 hover:text-white transition-colors">Profil</a></li>
+                <li><a href="#projects" class="text-slate-400 hover:text-white transition-colors">Projets</a></li>
+                <li><a href="#contact" class="text-slate-400 hover:text-white transition-colors">Contact</a></li>
             </ul>
-
-            <!-- Actions -->
-            <div class="flex items-center gap-3 pl-2">
-                <div class="h-4 w-px bg-white/10 hidden md:block"></div>
-                <a href="https://www.linkedin.com/in/moussa-sissoko-data-science/" target="_blank" class="text-slate-400 hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin w-4 h-4" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-                <a href="https://github.com/SORADATA" target="_blank" class="text-slate-400 hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="github" class="lucide lucide-github w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                </a>
-                <button id="menuToggle" class="md:hidden text-slate-200 hover:text-indigo-400 transition-colors ml-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu w-5 h-5" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="absolute top-full left-0 w-full mt-2 bg-[#0a0a0a]/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 flex-col gap-1 hidden transform origin-top transition-all duration-300 shadow-xl overflow-hidden">
-            <a href="#hero" class="block px-4 py-3 text-sm text-slate-300 hover:bg-white/5 rounded-xl transition-colors">Accueil</a>
-            <a href="#about" class="block px-4 py-3 text-sm text-slate-300 hover:bg-white/5 rounded-xl transition-colors">À propos</a>
-            <a href="#experience" class="block px-4 py-3 text-sm text-slate-300 hover:bg-white/5 rounded-xl transition-colors">Parcours</a>
-            <a href="#projects" class="block px-4 py-3 text-sm text-slate-300 hover:bg-white/5 rounded-xl transition-colors">Projets</a>
-            <a href="#contact" class="block px-4 py-3 text-sm text-slate-300 hover:bg-white/5 rounded-xl transition-colors">Contact</a>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="min-h-screen flex overflow-hidden pt-20 relative items-center justify-center" id="hero">
-        <div class="container text-center z-10 mr-auto ml-auto pr-6 pl-6 relative">
-            
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/[0.08] border border-indigo-500/20 mb-8 animate-float backdrop-blur-sm">
+    <section class="min-h-screen flex flex-col items-center justify-center relative pt-20 text-center px-6">
+        <div class="reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-8">
                 <span class="relative flex h-2 w-2">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
                 </span>
-                <span class="text-[11px] font-medium text-indigo-300 tracking-wider uppercase">Open to Work</span>
+                <span class="text-[11px] font-mono text-indigo-300 uppercase tracking-widest">Open to Work</span>
             </div>
 
-            <!-- Title -->
-            <h1 class="md:text-7xl lg:text-8xl leading-[1.05] text-5xl font-semibold text-white tracking-tight mb-8">
-                Transformer la Data en <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-white to-indigo-300">Valeur Stratégique</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight mb-8 leading-[1.1]">
+                Data Analyst <br>
+                <span class="text-slate-500">& Engineer.</span>
             </h1>
 
-            <!-- Subtitle/Typewriter -->
-            <div class="h-6 mb-8 font-mono text-sm md:text-base text-indigo-400/80">
-                &gt; <span id="animated-keywords"></span><span class="animate-pulse">_</span>
-            </div>
-
-            <!-- Description -->
-            <p class="max-w-xl mx-auto text-slate-400 text-base md:text-lg mb-10 leading-relaxed font-light">
-                J’allie expertise statistique et ingénierie de données pour convertir des flux complexes en décisions claires et impactantes.
+            <p class="max-w-2xl mx-auto text-slate-400 text-lg md:text-xl mb-12 font-light leading-relaxed">
+                Je transforme la complexité des données financières et économiques en <span class="text-white font-medium">leviers stratégiques clairs</span>.
             </p>
 
-            <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://drive.google.com/file/d/1KAIVypOyIPK8tY64jWpK8maQYb5ehF25/view?usp=drive_link" target="_blank" class="group relative px-6 py-3 rounded-full bg-slate-50 text-black font-semibold text-sm hover:bg-white transition-all shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)]">
-                    <span class="flex items-center gap-2">
-                        Télécharger CV
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="download" class="lucide lucide-download w-4 h-4 group-hover:translate-y-0.5 transition-transform" aria-hidden="true"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
-                    </span>
-                </a>
-                <a href="#projects" class="group px-6 py-3 rounded-full border border-white/10 bg-white/[0.02] text-white font-medium text-sm hover:bg-white/[0.08] transition-all backdrop-blur-md">
-                    <span class="flex items-center gap-2">
-                        Voir Projets
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                </a>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#projects" class="text-white border-b border-white pb-0.5 hover:text-indigo-400 hover:border-indigo-400 transition-all text-sm font-medium">Voir mes projets</a>
+                <span class="text-slate-700 hidden sm:inline">/</span>
+                <a href="https://linkedin.com" target="_blank" class="text-slate-500 hover:text-white transition-colors text-sm">LinkedIn</a>
+                <a href="https://github.com" target="_blank" class="text-slate-500 hover:text-white transition-colors text-sm">GitHub</a>
             </div>
         </div>
     </section>
 
-    <!-- ABOUT SECTION (Refined without frame) -->
-    <section id="about" class="py-32 relative z-10">
-        <div class="container mx-auto px-6 max-w-6xl reveal">
-            <div class="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+    <section id="about" class="py-24 relative">
+        <div class="container mx-auto px-6 max-w-3xl text-center reveal">
+            
+            <h2 class="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-8">Expertise</h2>
+            <p class="text-2xl md:text-3xl text-slate-200 font-light leading-relaxed mb-16">
+                Actuellement en Master d'Expertise Statistique à l'Université de Lorraine. Mon approche est hybride : j'allie la <span class="text-white font-medium">rigueur mathématique</span> à la puissance de <span class="text-white font-medium">l'ingénierie moderne</span> pour construire des architectures de données robustes.
+            </p>
+
+            <div class="border-y border-white/5 py-8">
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i data-lucide="code-2" class="w-4 h-4 text-indigo-500"></i> <span class="text-sm font-medium text-white">Python & R</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i data-lucide="database" class="w-4 h-4 text-indigo-500"></i> <span class="text-sm font-medium text-white">SQL & SAS</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i data-lucide="brain-circuit" class="w-4 h-4 text-indigo-500"></i> <span class="text-sm font-medium text-white">Machine Learning</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i data-lucide="bar-chart-3" class="w-4 h-4 text-indigo-500"></i> <span class="text-sm font-medium text-white">Power BI</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i data-lucide="workflow" class="w-4 h-4 text-indigo-500"></i> <span class="text-sm font-medium text-white">Airflow</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 relative">
+        <div class="container mx-auto px-6 max-w-2xl reveal">
+            <h2 class="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-16 text-center">Parcours</h2>
+
+            <div class="relative border-l border-white/10 ml-3 md:ml-0 space-y-16">
                 
-                <!-- Seamless Profile (Left Sticky) -->
-                <div class="lg:col-span-4 lg:sticky lg:top-32">
-                    <div class="flex flex-col items-center text-center">
-                        <!-- Avatar with gradient ring -->
-                        <div class="relative group mb-6">
-                            <div class="absolute -inset-0.5 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full opacity-70 blur-md group-hover:opacity-100 transition duration-500"></div>
-                            <div class="relative w-32 h-32 rounded-full p-[2px] bg-gradient-to-b from-white/20 to-transparent overflow-hidden bg-[#0a0a0a]">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=300&amp;auto=format&amp;fit=crop" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&amp;w=300&amp;auto=format&amp;fit=crop'" alt="Moussa Sissoko" class="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all duration-500">
-                            </div>
-                        </div>
-                        
-                        <!-- Name & Role -->
-                        <h3 class="text-2xl font-semibold text-white tracking-tight mb-1">Moussa Sissoko</h3>
-                        <p class="text-sm font-medium text-indigo-400/90 tracking-wide">Data Analyst &amp; Engineer</p>
-                        
-                        <!-- Divider -->
-                        <div class="w-24 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-8"></div>
-
-                        <!-- Minimal Stats Row -->
-                        <div class="flex items-center justify-center gap-8 w-full">
-                            <div class="flex flex-col items-center">
-                                <span class="text-xl font-bold text-white tracking-tight stat-number" data-target="10">0</span>
-                                <span class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-medium mt-1">Projets</span>
-                            </div>
-                            <div class="w-px h-8 bg-white/5"></div>
-                            <div class="flex flex-col items-center">
-                                <span class="text-xl font-bold text-white tracking-tight stat-number" data-target="5">0</span>
-                                <span class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-medium mt-1">Stack</span>
-                            </div>
-                            <div class="w-px h-8 bg-white/5"></div>
-                            <div class="flex flex-col items-center">
-                                <span class="text-xl font-bold text-white tracking-tight stat-number" data-target="2">0</span>
-                                <span class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-medium mt-1">Années</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="relative pl-12">
+                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
+                    <span class="text-xs font-mono text-indigo-400 mb-2 block">Actuel</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Apprenti Data Analytics</h3>
+                    <p class="text-sm text-slate-500 mb-4">Ministère de l’Économie et des Finances</p>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Automatisation des workflows de données via Airflow et structuration des bases SQL. Conception de tableaux de bord stratégiques pour le pilotage de la donnée.
+                    </p>
                 </div>
 
-                <!-- Content (Right) -->
-                <div class="lg:col-span-8 pt-4">
-                    <div class="flex items-center gap-3 mb-8">
-                        <span class="h-px w-6 bg-indigo-500/50"></span>
-                        <h2 class="text-xs font-mono text-indigo-400 uppercase tracking-widest">À propos</h2>
-                    </div>
-                    
-                    <h3 class="text-3xl md:text-4xl font-semibold text-white mb-8 tracking-tight leading-tight">
-                        Expertise Statistique pour <br>
-                        <span class="text-slate-500">l'Économie &amp; la Finance.</span>
-                    </h3>
-                    
-                    <div class="space-y-6 text-slate-400 leading-relaxed text-lg font-light mb-12">
-                        <p>
-                            Actuellement en Master d'Expertise Statistique pour l'Économie et la Finance à l'Université de Lorraine, je développe une approche hybride : la rigueur mathématique alliée à la puissance du développement moderne.
-                        </p>
-                        <p>
-                            Mon objectif est simple : transformer des données brutes et complexes en leviers de performance mesurables.
-                        </p>
-                    </div>
-
-                    <!-- Tech Stack -->
-                    <div class="border-t border-white/5 pt-10">
-                        <h4 class="text-white text-sm font-medium mb-6 flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="cpu" class="lucide lucide-cpu w-4 h-4 text-indigo-400" aria-hidden="true"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg> Stack Technique
-                        </h4>
-                        
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                            <!-- Stack Items -->
-                            <div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-white/[0.03] transition-colors border border-transparent hover:border-white/5">
-                                <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="code-2" class="lucide lucide-code-2 w-4 h-4" aria-hidden="true"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
-                                </div>
-                                <div>
-                                    <span class="block text-sm text-slate-200 font-medium">Python</span>
-                                    <span class="block text-[10px] text-slate-500">Pandas, Scikit</span>
-                                </div>
-                            </div>
-
-                            <div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-white/[0.03] transition-colors border border-transparent hover:border-white/5">
-                                <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-3" class="lucide lucide-bar-chart-3 w-4 h-4" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
-                                </div>
-                                <div>
-                                    <span class="block text-sm text-slate-200 font-medium">R Stats</span>
-                                    <span class="block text-[10px] text-slate-500">Shiny, Tidyverse</span>
-                                </div>
-                            </div>
-
-                            <div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-white/[0.03] transition-colors border border-transparent hover:border-white/5">
-                                <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="database" class="lucide lucide-database w-4 h-4" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
-                                </div>
-                                <div>
-                                    <span class="block text-sm text-slate-200 font-medium">SQL</span>
-                                    <span class="block text-[10px] text-slate-500">PostgreSQL</span>
-                                </div>
-                            </div>
-
-                            <div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-white/[0.03] transition-colors border border-transparent hover:border-white/5">
-                                <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="pie-chart" class="lucide lucide-pie-chart w-4 h-4" aria-hidden="true"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"></path><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path></svg>
-                                </div>
-                                <div>
-                                    <span class="block text-sm text-slate-200 font-medium">Power BI</span>
-                                    <span class="block text-[10px] text-slate-500">DAX, Modeling</span>
-                                </div>
-                            </div>
-                            
-                            <div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-white/[0.03] transition-colors border border-transparent hover:border-white/5">
-                                <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="wind" class="lucide lucide-wind w-4 h-4" aria-hidden="true"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"></path><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"></path><path d="M9.8 4.4A2 2 0 1 1 11 8H2"></path></svg>
-                                </div>
-                                <div>
-                                    <span class="block text-sm text-slate-200 font-medium">Airflow</span>
-                                    <span class="block text-[10px] text-slate-500">Orchestration</span>
-                                </div>
-                            </div>
-                             <div class="group flex items-center gap-3 p-3 rounded-lg hover:bg-white/[0.03] transition-colors border border-transparent hover:border-white/5">
-                                <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center group-hover:bg-indigo-500/20 group-hover:text-indigo-300 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="brain-circuit" class="lucide lucide-brain-circuit w-4 h-4" aria-hidden="true"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path><path d="M9 13a4.5 4.5 0 0 0 3-4"></path><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path><path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path><path d="M6 18a4 4 0 0 1-1.967-.516"></path><path d="M12 13h4"></path><path d="M12 18h6a2 2 0 0 1 2 2v1"></path><path d="M12 8h8"></path><path d="M16 8V5a2 2 0 0 1 2-2"></path><circle cx="16" cy="13" r=".5"></circle><circle cx="18" cy="3" r=".5"></circle><circle cx="20" cy="21" r=".5"></circle><circle cx="20" cy="8" r=".5"></circle></svg>
-                                </div>
-                                <div>
-                                    <span class="block text-sm text-slate-200 font-medium">ML</span>
-                                    <span class="block text-[10px] text-slate-500">XGBoost, K-Means</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="py-32 relative border-y border-white/[0.03] bg-white/[0.005]">
-        <div class="container mx-auto px-6 max-w-4xl reveal">
-            <div class="text-center mb-20">
-                <span class="text-indigo-400 font-mono text-xs tracking-widest uppercase mb-3 block">Carrière</span>
-                <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight">Parcours Professionnel</h2>
-            </div>
-
-            <div class="relative">
-                <!-- Vertical Line -->
-                <div class="absolute left-8 md:left-1/2 h-full w-px bg-white/10 md:-translate-x-1/2"></div>
-
-                <!-- Item 1 -->
-                <div class="relative flex flex-col md:flex-row items-center justify-between mb-16 group">
-                    <div class="md:w-5/12 text-left md:text-right pl-20 md:pl-0 md:pr-12">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[10px] font-mono font-medium uppercase tracking-wide mb-3">Actuel</span>
-                        <h3 class="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Apprenti Data Analytics</h3>
-                        <p class="text-sm text-slate-500 font-medium mb-3">Ministère de l’Économie et des Finances</p>
-                        <p class="text-sm text-slate-400 leading-relaxed font-light">
-                            Automatisation workflows (Airflow), structuration SQL. Gouvernance de la donnée et dashboards stratégiques.
-                        </p>
-                    </div>
-                    <div class="absolute left-8 md:left-1/2 w-3 h-3 rounded-full bg-[#030305] border border-indigo-500 md:-translate-x-1/2 mt-1 md:mt-0 shadow-[0_0_15px_rgba(99,102,241,0.5)] z-10 box-content"></div>
-                    <div class="md:w-5/12 hidden md:block"></div>
+                <div class="relative pl-12">
+                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-700"></div>
+                    <span class="text-xs font-mono text-slate-500 mb-2 block">Avril 2025 - Août 2025</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Stagiaire Data Analyst</h3>
+                    <p class="text-sm text-slate-500 mb-4">Banque de France</p>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Développement d'outils NLP sur données bancaires avec R Shiny. Analyse statistique et production d'indicateurs macroéconomiques.
+                    </p>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="relative flex flex-col md:flex-row items-center justify-between mb-16 group">
-                    <div class="md:w-5/12 hidden md:block"></div>
-                    <div class="absolute left-8 md:left-1/2 w-3 h-3 rounded-full bg-[#030305] border border-slate-700 group-hover:border-indigo-500 md:-translate-x-1/2 mt-1 md:mt-0 transition-colors z-10 box-content"></div>
-                    <div class="md:w-5/12 text-left pl-20 md:pl-12">
-                        <span class="text-slate-500 text-[10px] font-mono tracking-wide uppercase mb-2 block">Avril 2025 - Août 2025</span>
-                        <h3 class="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Stagiaire Data Analyst</h3>
-                        <p class="text-sm text-slate-500 font-medium mb-3">Banque de France</p>
-                        <p class="text-sm text-slate-400 leading-relaxed font-light">
-                            Développement NLP sur données bancaires (R Shiny). Analyse statistique macroéconomique.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="relative flex flex-col md:flex-row items-center justify-between group">
-                    <div class="md:w-5/12 text-left md:text-right pl-20 md:pl-0 md:pr-12">
-                        <span class="text-slate-500 text-[10px] font-mono tracking-wide uppercase mb-2 block">Juin 2023 - Août 2023</span>
-                        <h3 class="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">Gestionnaire Finances</h3>
-                        <p class="text-sm text-slate-500 font-medium mb-3">CDEF Maine et Loire</p>
-                        <p class="text-sm text-slate-400 leading-relaxed font-light">
-                            Pilotage financier via Power BI. Modélisation budgétaire Excel et fiabilisation des flux comptables.
-                        </p>
-                    </div>
-                    <div class="absolute left-8 md:left-1/2 w-3 h-3 rounded-full bg-[#030305] border border-slate-700 group-hover:border-indigo-500 md:-translate-x-1/2 mt-1 md:mt-0 transition-colors z-10 box-content"></div>
-                    <div class="md:w-5/12 hidden md:block"></div>
+                <div class="relative pl-12">
+                    <div class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-700"></div>
+                    <span class="text-xs font-mono text-slate-500 mb-2 block">Juin 2023 - Août 2023</span>
+                    <h3 class="text-xl font-bold text-white mb-1">Gestionnaire Finances</h3>
+                    <p class="text-sm text-slate-500 mb-4">CDEF Maine et Loire</p>
+                    <p class="text-slate-400 leading-relaxed text-sm">
+                        Pilotage financier via Power BI. Modélisation budgétaire sur Excel et fiabilisation des flux comptables.
+                    </p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="py-32 relative z-10">
-        <div class="container mx-auto px-6 reveal">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-3">Projets Sélectionnés</h2>
-                    <p class="text-slate-400 font-light max-w-lg">Une collection de travaux alliant rigueur technique et impact business.</p>
-                </div>
-                <a href="https://github.com/SORADATA" target="_blank" class="group flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
-                    Voir tout sur GitHub 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                </a>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Project 1 -->
-                <article class="group relative bg-[#0a0a0a] border border-white/5 rounded-xl overflow-hidden hover:border-indigo-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10">
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-80 z-10"></div>
-                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" onerror="this.src='https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg'" alt="AlphaEdge" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 z-20 flex gap-2">
-                             <span class="text-[10px] font-mono uppercase tracking-wider text-indigo-300 px-2 py-1 rounded-md bg-indigo-500/20 backdrop-blur-md border border-indigo-500/20">Finance</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-indigo-300 transition-colors">AlphaEdge: CAC40 Manager</h3>
-                        <p class="text-sm text-slate-400 mb-6 font-light line-clamp-2">
-                            Gestion autonome de portefeuille via clustering (K-Means) et prédiction (XGBoost). CI/CD complet.
-                        </p>
-                        <div class="flex items-center gap-4 mt-auto">
-                            <a href="https://cac40-smart-portfolio-asset.streamlit.app/" target="_blank" class="text-xs font-medium text-white flex items-center gap-1.5 hover:text-indigo-400 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="play-circle" class="lucide lucide-play-circle w-4 h-4" aria-hidden="true"><path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z"></path><circle cx="12" cy="12" r="10"></circle></svg> Live Demo
-                            </a>
-                            <a href="https://github.com/SORADATA/CAC40-Quantitative-Analysis-Predictive-Asset-Allocation" target="_blank" class="text-xs font-medium text-slate-500 flex items-center gap-1.5 hover:text-white transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="code-2" class="lucide lucide-code-2 w-4 h-4" aria-hidden="true"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg> Code
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 2 -->
-                <article class="group relative bg-[#0a0a0a] border border-white/5 rounded-xl overflow-hidden hover:border-indigo-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10">
-                    <div class="h-48 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-80 z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&amp;w=800&amp;auto=format&amp;fit=crop" onerror="this.src='https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&amp;w=800&amp;auto=format&amp;fit=crop'" alt="Text Mining" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 z-20 flex gap-2">
-                             <span class="text-[10px] font-mono uppercase tracking-wider text-indigo-300 px-2 py-1 rounded-md bg-indigo-500/20 backdrop-blur-md border border-indigo-500/20">NLP</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-indigo-300 transition-colors">Text Mining App</h3>
-                        <p class="text-sm text-slate-400 mb-6 font-light line-clamp-2">
-                            Dashboard interactif R Shiny pour l'exploration textuelle avancée et l'analyse de sentiments.
-                        </p>
-                        <div class="flex items-center gap-4 mt-auto">
-                            <a href="https://0qbv48-sissoko-moussa.shinyapps.io/Analytics_text/" target="_blank" class="text-xs font-medium text-white flex items-center gap-1.5 hover:text-indigo-400 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="play-circle" class="lucide lucide-play-circle w-4 h-4" aria-hidden="true"><path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z"></path><circle cx="12" cy="12" r="10"></circle></svg> Live Demo
-                            </a>
-                             <a href="https://github.com/SORADATA/shiny-text-mining-app/blob/main/Analytics_text/app.R" target="_blank" class="text-xs font-medium text-slate-500 flex items-center gap-1.5 hover:text-white transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="code-2" class="lucide lucide-code-2 w-4 h-4" aria-hidden="true"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg> Code
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="group relative bg-[#0a0a0a] border border-white/5 rounded-xl overflow-hidden hover:border-indigo-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10">
-                    <div class="h-48 overflow-hidden relative">
-                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent opacity-80 z-10"></div>
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&amp;w=800&amp;auto=format&amp;fit=crop" onerror="this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&amp;w=800&amp;auto=format&amp;fit=crop'" alt="Risk" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 z-20 flex gap-2">
-                             <span class="text-[10px] font-mono uppercase tracking-wider text-indigo-300 px-2 py-1 rounded-md bg-indigo-500/20 backdrop-blur-md border border-indigo-500/20">Risk</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold text-white mb-2 group-hover:text-indigo-300 transition-colors">Credit Risk Analysis</h3>
-                        <p class="text-sm text-slate-400 mb-6 font-light line-clamp-2">
-                            Modélisation statistique (SAS) pour la prédiction de défauts de paiement et scoring bancaire.
-                        </p>
-                        <div class="flex items-center gap-4 mt-auto">
-                             <a href="https://github.com/SORADATA/SORADATA/tree/main/SAS" target="_blank" class="text-xs font-medium text-slate-500 flex items-center gap-1.5 hover:text-white transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="github" class="lucide lucide-github w-4 h-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg> Repository
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="py-32 relative z-10">
+    <section id="projects" class="py-24 border-t border-white/5 bg-white/[0.02]">
         <div class="container mx-auto px-6 max-w-5xl reveal">
-            <div class="bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 md:p-12 overflow-hidden relative shadow-2xl">
-                
-                <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+            <h2 class="text-sm font-mono text-indigo-400 uppercase tracking-widest mb-12">Projets Sélectionnés</h2>
 
-                <div class="grid md:grid-cols-2 gap-16">
-                    <div>
-                        <h2 class="text-3xl font-semibold text-white tracking-tight mb-4">Parlons Data.</h2>
-                        <p class="text-slate-400 mb-10 font-light leading-relaxed">
-                            Disponible pour opportunités en alternance ou collaborations freelance. 
-                            <br>Basé à Paris / Grand-Est.
-                        </p>
-                        
-                        <div class="space-y-6">
-                            <a href="mailto:sissokomoussa611@gmail.com" class="flex items-center gap-4 group">
-                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 border border-white/5 group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="mail" class="lucide lucide-mail w-4 h-4" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-slate-500 font-mono uppercase tracking-wider">Email</p>
-                                    <p class="text-sm text-white group-hover:text-indigo-400 transition-colors">sissokomoussa611@gmail.com</p>
-                                </div>
-                            </a>
-                            
-                            <div class="flex items-center gap-4 group">
-                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 border border-white/5 group-hover:bg-indigo-500 group-hover:text-white transition-all">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="phone" class="lucide lucide-phone w-4 h-4" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] text-slate-500 font-mono uppercase tracking-wider">Téléphone</p>
-                                    <p class="text-sm text-white group-hover:text-indigo-400 transition-colors">+33 7 43 01 23 46</p>
-                                </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <div class="md:col-span-2 group relative bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all">
+                    <div class="grid md:grid-cols-2">
+                        <div class="h-64 md:h-auto bg-slate-900 relative overflow-hidden">
+                             <div class="absolute inset-0 bg-indigo-900/20 group-hover:bg-transparent transition-all duration-500"></div>
+                            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        </div>
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-white mb-4">AlphaEdge: CAC40 Manager</h3>
+                            <p class="text-slate-400 mb-8 leading-relaxed">
+                                Une solution complète de gestion de portefeuille autonome. Utilisation de K-Means pour la détection de régime et XGBoost pour la prédiction. 
+                                <br><br>
+                                <span class="text-slate-500 text-sm">Stack: Python, Streamlit, GitHub Actions, Docker.</span>
+                            </p>
+                            <div class="flex gap-4">
+                                <a href="https://cac40-smart-portfolio-asset.streamlit.app/" target="_blank" class="text-white border-b border-white pb-0.5 hover:text-indigo-400 hover:border-indigo-400 transition-all text-sm">Voir la démo</a>
+                                <a href="#" class="text-slate-500 hover:text-white transition-colors text-sm">Code Source</a>
                             </div>
                         </div>
                     </div>
-
-                    <form action="https://formspree.io/f/xkgvdjbg" method="POST" class="space-y-4 relative z-10">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="space-y-1">
-                                <label class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Nom</label>
-                                <input type="text" name="name" required="" class="w-full bg-[#030305] border border-white/10 rounded-md px-4 py-2.5 text-white focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all text-sm placeholder:text-slate-700" placeholder="John Doe">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Email</label>
-                                <input type="email" name="email" required="" class="w-full bg-[#030305] border border-white/10 rounded-md px-4 py-2.5 text-white focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all text-sm placeholder:text-slate-700" placeholder="john@example.com">
-                            </div>
-                        </div>
-                        <div class="space-y-1">
-                             <label class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Sujet</label>
-                            <input type="text" name="subject" required="" class="w-full bg-[#030305] border border-white/10 rounded-md px-4 py-2.5 text-white focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all text-sm placeholder:text-slate-700" placeholder="Opportunité...">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Message</label>
-                            <textarea name="message" rows="4" required="" class="w-full bg-[#030305] border border-white/10 rounded-md px-4 py-2.5 text-white focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all text-sm placeholder:text-slate-700" placeholder="Votre message..."></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-white text-black hover:bg-slate-200 font-medium py-2.5 rounded-md transition-all shadow-lg flex items-center justify-center gap-2 text-sm mt-2">
-                            Envoyer le message <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="send" class="lucide lucide-send w-4 h-4" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
-                        </button>
-                    </form>
                 </div>
+
+                <div class="group bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <i data-lucide="message-square" class="w-8 h-8 text-slate-700 group-hover:text-indigo-500 transition-colors"></i>
+                        <a href="#" class="text-slate-600 hover:text-white"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Text Mining R Shiny</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Dashboard interactif pour l'analyse NLP et sentiment analysis sur de grands corpus de textes financiers.</p>
+                </div>
+
+                <div class="group bg-[#0a0a0a] border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-slate-700 group-hover:text-indigo-500 transition-colors"></i>
+                        <a href="#" class="text-slate-600 hover:text-white"><i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Credit Risk Analysis</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Modélisation du risque de crédit avec SAS. Régression logistique et scoring pour prédire les défauts.</p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer class="py-8 border-t border-white/5 bg-[#030305] text-center relative z-10">
-        <p class="text-xs text-slate-600 font-mono">© 2025 Moussa Sissoko.</p>
-    </footer>
-
-    <!-- Scroll Top -->
-    <button id="scrollTop" class="fixed bottom-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-indigo-600 text-white flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:-translate-y-1 shadow-lg backdrop-blur-md z-40 border border-white/10">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up" class="lucide lucide-arrow-up w-5 h-5" aria-hidden="true"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
-    </button>
+    <section id="contact" class="py-24 text-center">
+        <div class="container mx-auto px-6 reveal">
+            <h2 class="text-3xl font-bold text-white mb-8">Envie de collaborer ?</h2>
+            <a href="mailto:sissokomoussa611@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-medium hover:scale-105 transition-transform">
+                <i data-lucide="mail" class="w-4 h-4"></i> sissokomoussa611@gmail.com
+            </a>
+            <p class="mt-12 text-slate-600 text-xs font-mono">© 2026 Moussa Sissoko.</p>
+        </div>
+    </section>
 
     <script>
-        // Initialize Icons
-        lucide.createIcons({
-            attrs: {
-                'stroke-width': 1.5,
-                'class': "lucide" 
-            }
-        });
-
-        // Toggle Menu
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
+        lucide.createIcons();
         
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Animations
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const revealObserver = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        // Typewriter
-        const keywords = [
-            "Data Science", "Machine Learning", "Big Data", "Business Intelligence", 
-            "Python & R", "Airflow", "Économétrie"
-        ];
-        let wordIndex = 0;
-        const textElement = document.getElementById("animated-keywords");
-
-        function typeWriter(text, i = 0) {
-            if (i <= text.length) {
-                textElement.innerHTML = text.slice(0, i);
-                setTimeout(() => typeWriter(text, i + 1), 40);
-            } else {
-                setTimeout(() => deleteWriter(text), 2000);
-            }
-        }
-
-        function deleteWriter(text, i = text.length) {
-            if (i >= 0) {
-                textElement.innerHTML = text.slice(0, i);
-                setTimeout(() => deleteWriter(text, i - 1), 20);
-            } else {
-                wordIndex = (wordIndex + 1) % keywords.length;
-                typeWriter(keywords[wordIndex]);
-            }
-        }
-        
-        document.addEventListener("DOMContentLoaded", () => typeWriter(keywords[0]));
-
-        // Stats Counter
-        let counted = false;
-        const statObserver = new IntersectionObserver((entries) => {
-            if(entries[0].isIntersecting && !counted) {
-                counted = true;
-                document.querySelectorAll('.stat-number').forEach(counter => {
-                    const target = +counter.getAttribute('data-target');
-                    let count = 0;
-                    const increment = target / 30; 
-                    const updateCount = () => {
-                        count += increment;
-                        if(count < target) {
-                            counter.innerText = Math.ceil(count);
-                            requestAnimationFrame(updateCount);
-                        } else {
-                            counter.innerText = target + (target > 5 ? "+" : "");
-                        }
-                    };
-                    updateCount();
-                });
-            }
         });
-        
-        const statsSection = document.querySelector('.stat-number');
-        if(statsSection) statObserver.observe(statsSection.parentElement);
-
-        // Scroll Top
-        const scrollTopBtn = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                scrollTopBtn.classList.remove('opacity-0', 'invisible');
-            } else {
-                scrollTopBtn.classList.add('opacity-0', 'invisible');
-            }
-        });
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
-
-</body></html>
+</body>
+</html>
