@@ -1,26 +1,27 @@
-<!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moussa SISSOKO | Data Analytics & Engineer</title>
-    
+    <title>Moussa SISSOKO | Data Analytics &amp; Engineer</title>
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+   
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #050507; color: #94a3b8; }
         .font-mono { font-family: 'JetBrains Mono', monospace; }
-        
+       
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #050507; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #444; }
+
 
         /* Utilities */
         .glass-card {
@@ -28,141 +29,161 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        
-        /* ========== ANIMATIONS PRINCIPALES ========== */
-        
-        /* 1. Gradient animé sur le titre */
+       
+        /* Animation Utilities */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+
+        /* NOUVELLES ANIMATIONS AJOUTÉES ICI */
         @keyframes gradient-x {
-            0%, 100% { background-position: 0% 50%; }
+            0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        
-        .animate-gradient-text {
-            background: linear-gradient(90deg, #818cf8, #c084fc, #818cf8, #c084fc);
-            background-size: 300% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-x 4s ease infinite;
+       
+        @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* 2. Fade-in progressif */
-        @keyframes fade-in-up {
-            from { 
-                opacity: 0; 
-                transform: translateY(30px); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            }
+        /* ANIMATIONS TECH AJOUTÉES */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
+
+        @keyframes stream-flow {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes data-points {
+            0% { transform: translate(0, 0) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translate(var(--tx), var(--ty)) scale(1); opacity: 0; }
+        }
+
+        @keyframes binary-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes circuit-glow {
+            0%, 100% { stroke-dashoffset: 1000; opacity: 0.3; }
+            50% { stroke-dashoffset: 0; opacity: 0.8; }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+
+
+        .animate-gradient-text {
+            background-size: 200% auto;
+            animation: gradient-x 4s linear infinite;
+        }
+
 
         .animate-enter {
-            opacity: 0;
-            animation: fade-in-up 1s ease-out forwards;
+            animation: fade-in-up 0.8s ease-out forwards;
         }
 
-        /* 3. Rotation 3D sur icônes */
-        @keyframes rotate-3d {
-            0% { transform: perspective(400px) rotateY(0deg); }
-            100% { transform: perspective(400px) rotateY(360deg); }
-        }
-
-        .hover-rotate-3d:hover iconify-icon {
-            animation: rotate-3d 0.6s ease-in-out;
-        }
-
-        /* 4. Effet glow au survol */
-        .glow-hover {
-            transition: all 0.3s ease;
-        }
-
-        .glow-hover:hover {
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
-            transform: translateY(-2px);
-        }
-
-        /* 5. Reveal animation au scroll */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* 6. Pulse doux */
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        .animate-pulse-soft {
-            animation: pulse-soft 2s ease-in-out infinite;
-        }
-
-        /* 7. Float animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* 8. Slide-in depuis la gauche */
-        @keyframes slide-in-left {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .animate-slide-left {
-            animation: slide-in-left 0.6s ease-out;
-        }
-
-        /* 9. Effet shimmer sur les cartes */
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-
-        .shimmer-effect::before {
-            content: '';
+        /* Styles pour les nouvelles animations */
+        .data-point {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.03),
-                transparent
-            );
-            background-size: 1000px 100%;
-            animation: shimmer 3s infinite;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: data-points 2s linear infinite;
             pointer-events: none;
+        }
+
+        .data-stream {
+            position: absolute;
+            width: 300px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #6366f1, transparent);
+            filter: blur(1px);
+            animation: stream-flow 3s linear infinite;
+            pointer-events: none;
+        }
+
+        .binary-char {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: rgba(99, 102, 241, 0.7);
+            animation: binary-fall linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .circuit-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: circuit-glow 3s ease-in-out infinite;
+        }
+
+        /* Effets de hover améliorés */
+        .hover-lift {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px) scale(1.02);
         }
     </style>
 </head>
 <body class="antialiased relative selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden">
 
-    <!-- Background Grid -->
-    <div class="fixed inset-0 z-0 pointer-events-none">
+
+    <!-- ANIMATION TECH EN ARRIÈRE-PLAN -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none animate-float"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <!-- Points de données animés -->
+        <div id="dataPointsContainer"></div>
+        
+        <!-- Flux de données -->
+        <div class="data-stream" style="top: 30%; left: 10%; animation-delay: 0s;"></div>
+        <div class="data-stream" style="top: 50%; left: 20%; animation-delay: 1s;"></div>
+        <div class="data-stream" style="top: 70%; left: 15%; animation-delay: 2s;"></div>
+        
+        <!-- Circuit SVG animé -->
+        <svg class="absolute top-1/4 left-1/4 w-64 h-64 opacity-20" viewBox="0 0 200 200">
+            <path class="circuit-path" d="M20,20 L80,20 L80,80 L140,80 L140,140 L180,140" 
+                  stroke="url(#circuitGradient)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path class="circuit-path" d="M180,60 L140,60 L140,20 L100,20" 
+                  stroke="url(#circuitGradient)" stroke-width="1.5" fill="none" stroke-linecap="round"
+                  style="animation-delay: 1.5s"/>
+            <defs>
+                <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6366f1" />
+                    <stop offset="50%" stop-color="#8b5cf6" />
+                    <stop offset="100%" stop-color="#6366f1" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+        <!-- Flottement d'éléments tech -->
+        <div class="absolute top-1/3 right-1/4 w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-600/20 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 blur-xl" 
+             style="animation: float 6s ease-in-out infinite"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 pt-6 px-6 animate-slide-left">
+
+    <nav class="fixed top-0 w-full z-50 pt-6 px-6">
         <div class="max-w-5xl mx-auto">
-            <div class="glass-card rounded-full px-6 py-3 flex items-center justify-between">
+            <div class="glass-card rounded-full px-6 py-3 flex items-center justify-between hover-lift">
                 <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-8 h-8 rounded bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
+                    <div class="w-8 h-8 rounded bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-indigo-500/20 animate-pulse">
                         MS
                     </div>
                     <span class="text-sm font-semibold tracking-tight text-white group-hover:text-indigo-200 transition-colors">
@@ -170,13 +191,15 @@
                     </span>
                 </a>
 
+
                 <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
                     <li><a href="#about" class="hover:text-white transition-colors">À propos</a></li>
                     <li><a href="#experience" class="hover:text-white transition-colors">Parcours</a></li>
                     <li><a href="#projects" class="hover:text-white transition-colors">Projets</a></li>
                 </ul>
 
-                <a href="https://github.com/SORADATA" target="_blank" class="flex items-center gap-2 text-xs font-semibold bg-white/5 border border-white/10 text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all hover:scale-105">
+
+                <a href="https://github.com/SORADATA" target="_blank" class="flex items-center gap-2 text-xs font-semibold bg-white/5 border border-white/10 text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all hover:scale-105 active:scale-95">
                     <iconify-icon icon="solar:brands-github-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
                     <span>GitHub</span>
                 </a>
@@ -184,12 +207,11 @@
         </div>
     </nav>
 
-    <!-- Header -->
+
     <header class="relative z-10 pt-40 pb-32 px-6">
-        <div class="flex flex-col text-center max-w-4xl mx-auto items-center">
-            
-            <!-- Badge Open to Work avec pulse -->
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium mb-10 text-indigo-300 animate-enter" style="animation-delay: 0s;">
+        <div class="flex flex-col text-center max-w-4xl mx-auto items-center reveal">
+           
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs font-medium mb-10 text-indigo-300 animate-pulse">
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-indigo-400"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
@@ -197,28 +219,41 @@
                 OPEN TO WORK
             </div>
 
-            <!-- Titre principal -->
-            <h1 class="text-5xl md:text-7xl font-semibold tracking-tight mb-2 leading-[0.95] text-white animate-enter" style="animation-delay: 0.1s;">
-                Transformer la Data en
-            </h1>
-            
-            <!-- Titre avec gradient animé -->
-            <h1 class="text-5xl md:text-7xl font-semibold tracking-tight mb-8 leading-[0.95] animate-gradient-text animate-enter" style="animation-delay: 0.3s;">
-                Valeur Stratégique.
-            </h1>
+            <!-- Titre avec animations tech -->
+            <div class="relative mb-8">
+                <h1 class="text-5xl md:text-7xl font-semibold tracking-tight mb-2 leading-[0.95] text-white animate-enter" style="animation-delay: 0.1s;">
+                    Transformer la Data en
+                </h1>
+                <h1 class="text-5xl md:text-7xl font-semibold tracking-tight leading-[0.95] text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400 animate-gradient-text animate-enter relative" style="animation-delay: 0.3s;">
+                    Valeur Stratégique.
+                    <!-- Effet de surbrillance -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-400/0 via-indigo-400/20 to-indigo-400/0 blur-xl animate-pulse" style="animation-duration: 3s;"></div>
+                </h1>
+                
+                <!-- Icônes tech flottantes -->
+                <div class="absolute -top-4 -right-4 w-8 h-8 text-indigo-400/40 animate-bounce" style="animation-delay: 0.2s;">
+                    <iconify-icon icon="solar:database-linear" width="100%" height="100%"></iconify-icon>
+                </div>
+                <div class="absolute -bottom-4 -left-4 w-8 h-8 text-purple-400/40 animate-bounce" style="animation-delay: 0.4s;">
+                    <iconify-icon icon="solar:chart-2-linear" width="100%" height="100%"></iconify-icon>
+                </div>
+            </div>
 
-            <!-- Description -->
-            <p class="leading-relaxed text-lg text-slate-400 max-w-2xl mb-12 font-light animate-enter" style="animation-delay: 0.5s;">
-                Data Analyst & Engineer spécialisé en <span class="text-indigo-400 font-normal">Finance</span>. 
+
+            <p class="leading-relaxed text-lg text-slate-400 max-w-2xl mb-12 font-light relative">
+                Data Analyst &amp; Engineer spécialisé en <span class="text-indigo-400 font-normal relative">
+                    Finance
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-400/50 to-transparent animate-pulse"></span>
+                </span>.
                 Je construis des pipelines robustes et des modèles prédictifs pour éclairer la décision stratégique.
             </p>
 
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto animate-enter" style="animation-delay: 0.7s;">
-                <a href="#projects" class="sm:w-auto w-full flex items-center justify-center gap-2 text-sm font-semibold bg-white text-black rounded-xl px-8 py-3.5 shadow-[0_0_30px_-10px_rgba(255,255,255,0.3)] hover:bg-slate-200 transition-all hover:scale-105 hover:shadow-[0_0_40px_-5px_rgba(255,255,255,0.4)]">
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a href="#projects" class="sm:w-auto w-full flex items-center justify-center gap-2 text-sm font-semibold bg-white text-black rounded-xl px-8 py-3.5 shadow-[0_0_30px_-10px_rgba(255,255,255,0.3)] hover:bg-slate-200 transition-all hover:scale-105 active:scale-95">
                     Explorer mes travaux
                 </a>
-                <a href="https://drive.google.com/file/d/1KAIVypOyIPK8tY64jWpK8maQYb5ehF25/view?usp=drive_link" target="_blank" class="sm:w-auto w-full flex items-center justify-center gap-2 text-sm font-medium bg-white/5 border border-white/10 text-slate-300 rounded-xl px-8 py-3.5 hover:bg-white/10 hover:text-white transition-all hover:scale-105">
+                <a href="https://drive.google.com/file/d/1KAIVypOyIPK8tY64jWpK8maQYb5ehF25/view?usp=drive_link" target="_blank" class="sm:w-auto w-full flex items-center justify-center gap-2 text-sm font-medium bg-white/5 border border-white/10 text-slate-300 rounded-xl px-8 py-3.5 hover:bg-white/10 hover:text-white transition-all hover:scale-105 active:scale-95">
                     <iconify-icon icon="solar:file-download-linear" stroke-width="1.5" class="text-lg"></iconify-icon>
                     Télécharger le CV
                 </a>
@@ -226,21 +261,21 @@
         </div>
     </header>
 
-    <!-- Section About -->
+
     <section id="about" class="relative z-10 py-24 px-6 border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-4 text-white">
-                    Expertise & <span class="text-indigo-400">Stack Technique</span>
+                    Expertise &amp; <span class="text-indigo-400">Stack Technique</span>
                 </h2>
                 <p class="text-slate-500 text-sm max-w-xl mx-auto">
                     Une approche hybride alliant rigueur mathématique et ingénierie moderne.
                 </p>
             </div>
 
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-                <!-- Card 1 -->
-                <div class="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 relative overflow-hidden glow-hover hover-rotate-3d shimmer-effect">
+                <div class="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors relative overflow-hidden hover-lift">
                     <div class="w-10 h-10 rounded-lg border border-indigo-500/20 bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6 group-hover:scale-110 transition-transform">
                         <iconify-icon icon="solar:database-linear" stroke-width="1.5" class="text-xl"></iconify-icon>
                     </div>
@@ -255,12 +290,12 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 glow-hover hover-rotate-3d shimmer-effect">
+
+                <div class="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors hover-lift">
                     <div class="w-10 h-10 rounded-lg border border-purple-500/20 bg-purple-500/10 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform">
                         <iconify-icon icon="solar:code-square-linear" stroke-width="1.5" class="text-xl"></iconify-icon>
                     </div>
-                    <h4 class="text-base font-medium mb-2 text-white">Analytics & NLP</h4>
+                    <h4 class="text-base font-medium mb-2 text-white">Analytics &amp; NLP</h4>
                     <p class="text-sm text-slate-500 leading-relaxed mb-4">
                         Analyse statistique avancée et traitement du langage naturel.
                     </p>
@@ -271,8 +306,8 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 glow-hover hover-rotate-3d shimmer-effect">
+
+                <div class="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors hover-lift">
                     <div class="w-10 h-10 rounded-lg border border-emerald-500/20 bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
                         <iconify-icon icon="solar:cpu-linear" stroke-width="1.5" class="text-xl"></iconify-icon>
                     </div>
@@ -287,8 +322,8 @@
                     </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-300 glow-hover hover-rotate-3d shimmer-effect">
+
+                <div class="group p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors hover-lift">
                     <div class="w-10 h-10 rounded-lg border border-amber-500/20 bg-amber-500/10 flex items-center justify-center text-amber-400 mb-6 group-hover:scale-110 transition-transform">
                         <iconify-icon icon="solar:chart-2-linear" stroke-width="1.5" class="text-xl"></iconify-icon>
                     </div>
@@ -307,8 +342,247 @@
         </div>
     </section>
 
-    <!-- Continue with other sections... -->
-    <!-- Le reste du code reste identique -->
+
+    <section id="experience" class="relative z-10 py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-end justify-between mb-10">
+                <div>
+                    <h2 class="text-3xl font-semibold tracking-tight mb-2 text-white">Parcours</h2>
+                    <p class="text-slate-500 text-sm font-medium">Expériences professionnelles clés.</p>
+                </div>
+            </div>
+
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 reveal">
+               
+                <div class="lg:col-span-2 glass-card rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-black/40 hover-lift">
+                    <div class="bg-gradient-to-b from-indigo-500/5 to-transparent border-b border-white/5 px-6 py-5 flex justify-between items-center">
+                        <h3 class="text-sm font-semibold text-indigo-400">Expérience Professionnelle</h3>
+                        <iconify-icon icon="solar:suitcase-linear" class="text-indigo-400"></iconify-icon>
+                    </div>
+
+
+                    <div class="divide-y divide-white/5">
+                       
+                        <div class="group flex items-start justify-between px-6 py-5 hover:bg-white/[0.02] transition-colors">
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full border border-white/5 bg-slate-800/50 flex items-center justify-center text-xs text-slate-400 flex-shrink-0">
+                                    MEF
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-slate-200 group-hover:text-indigo-400 transition-colors">
+                                        Apprenti Data Analytics
+                                    </div>
+                                    <div class="text-xs text-slate-500 mb-1">Ministère de l'Économie et des Finances</div>
+                                    <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                                        Automatisation workflows (Airflow), structuration SQL. Gouvernance de la donnée et dashboards stratégiques.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <span class="block text-xs font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">En cours</span>
+                                <span class="block text-[10px] text-slate-600 mt-1">Paris</span>
+                            </div>
+                        </div>
+
+
+                        <div class="group flex items-start justify-between px-6 py-5 hover:bg-white/[0.02] transition-colors">
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full border border-white/5 bg-slate-800/50 flex items-center justify-center text-xs text-slate-400 flex-shrink-0">
+                                    BdF
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-slate-200 group-hover:text-indigo-400 transition-colors">
+                                        Stagiaire Data Analyst
+                                    </div>
+                                    <div class="text-xs text-slate-500 mb-1">Banque de France</div>
+                                    <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                                        Développement NLP sur données bancaires (R Shiny). Analyse statistique macroéconomique.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <span class="block text-xs font-mono text-slate-500">2025</span>
+                                <span class="block text-[10px] text-slate-600 mt-1">Avril - Août</span>
+                            </div>
+                        </div>
+
+
+                        <div class="group flex items-start justify-between px-6 py-5 hover:bg-white/[0.02] transition-colors">
+                            <div class="flex gap-4">
+                                <div class="w-10 h-10 rounded-full border border-white/5 bg-slate-800/50 flex items-center justify-center text-xs text-slate-400 flex-shrink-0">
+                                    CDEF
+                                </div>
+                                <div>
+                                    <div class="text-sm font-medium text-slate-200 group-hover:text-indigo-400 transition-colors">
+                                        Gestionnaire Finances
+                                    </div>
+                                    <div class="text-xs text-slate-500 mb-1">CDEF Maine et Loire</div>
+                                    <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                                        Pilotage financier via Power BI. Modélisation budgétaire Excel et fiabilisation des flux comptables.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <span class="block text-xs font-mono text-slate-500">2023</span>
+                                <span class="block text-[10px] text-slate-600 mt-1">Été</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-black/40 hover-lift">
+                    <div class="bg-gradient-to-br from-purple-500/5 to-transparent border-b border-white/5 px-6 py-5 flex justify-between items-center">
+                        <h3 class="text-sm font-semibold text-purple-400">Formation</h3>
+                        <iconify-icon icon="solar:mortarboard-linear" class="text-purple-400"></iconify-icon>
+                    </div>
+                   
+                    <div class="p-6 space-y-6">
+                        <div class="relative pl-6 border-l border-white/10">
+                            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple-500 ring-4 ring-[#050507]"></div>
+                            <h4 class="text-sm text-white font-medium">Master Expertise Statistique</h4>
+                            <p class="text-xs text-slate-500 mt-1">Université de Lorraine</p>
+                            <p class="text-[10px] text-slate-600 mt-1 font-mono">En cours</p>
+                        </div>
+
+
+                        <div class="relative pl-6 border-l border-white/10">
+                            <div class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-slate-700 ring-4 ring-[#050507]"></div>
+                            <h4 class="text-sm text-white font-medium">Licence Économie &amp; Gestion</h4>
+                            <p class="text-xs text-slate-500 mt-1">Université d'Angers</p>
+                            <p class="text-[10px] text-slate-600 mt-1 font-mono">2022 - 2024</p>
+                        </div>
+                       
+                        <div class="pt-4 border-t border-white/5">
+                            <div class="flex items-center gap-2 mb-3">
+                                <iconify-icon icon="solar:medal-star-linear" class="text-amber-400"></iconify-icon>
+                                <span class="text-xs font-semibold text-white">Certifications</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-[10px] text-slate-300">Azure Data Fundamentals</span>
+                                <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-[10px] text-slate-300">SAS Programming</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects" class="relative z-10 py-24 px-6 border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <h2 class="text-3xl font-semibold tracking-tight mb-2 text-white">
+                        Projets Sélectionnés
+                    </h2>
+                    <p class="text-slate-500 text-sm font-medium">Une combinaison de technique et d'impact business.</p>
+                </div>
+                <a href="https://github.com/SORADATA" target="_blank" class="text-xs font-medium text-indigo-400 flex items-center gap-1 hover:text-indigo-300 transition-colors hover:scale-105">
+                    Voir tout le GitHub
+                    <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                </a>
+            </div>
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+               
+                <div class="lg:col-span-2 glass-card rounded-2xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-500 hover-lift">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-indigo-500/10 to-transparent blur-3xl -z-10 rounded-full"></div>
+                   
+                    <div class="flex flex-col h-full justify-between relative z-10">
+                        <div>
+                            <div class="flex gap-2 mb-4">
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-indigo-300 bg-indigo-500/10 px-2 py-1 rounded">Finance</span>
+                                <span class="text-[10px] font-mono uppercase tracking-wider text-purple-300 bg-purple-500/10 px-2 py-1 rounded">MLOps</span>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white mb-3 group-hover:text-indigo-200 transition-colors">AlphaEdge: CAC40 Allocation</h3>
+                            <p class="text-slate-400 mb-6 text-sm leading-relaxed max-w-lg">
+                                Système autonome de gestion de portefeuille. Utilise le clustering K-Means pour détecter les régimes de marché et XGBoost pour la prédiction directionnelle. Pipeline CI/CD automatisé via GitHub Actions.
+                            </p>
+                        </div>
+                       
+                        <div class="flex items-center gap-4 mt-4">
+                            <a href="https://cac40-smart-portfolio-asset.streamlit.app/" target="_blank" class="text-sm font-medium text-white flex items-center gap-2 hover:text-indigo-400 transition-colors bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:scale-105 active:scale-95">
+                                <iconify-icon icon="solar:play-circle-linear" class="text-lg"></iconify-icon> Live Demo
+                            </a>
+                            <a href="https://github.com/SORADATA/CAC40-Quantitative-Analysis-Predictive-Asset-Allocation" target="_blank" class="text-sm font-medium text-slate-500 flex items-center gap-2 hover:text-white transition-colors px-2 hover:scale-105">
+                                <iconify-icon icon="solar:code-circle-linear" class="text-lg"></iconify-icon> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="glass-card rounded-2xl p-6 relative group hover:border-white/20 transition-colors flex flex-col hover-lift">
+                    <div class="mb-4 flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white group-hover:bg-indigo-600 transition-all duration-300 shadow-lg">
+                            <iconify-icon icon="solar:chat-square-code-linear" class="text-xl"></iconify-icon>
+                        </div>
+                        <a href="https://0qbv48-sissoko-moussa.shinyapps.io/Analytics_text/" target="_blank" class="text-slate-500 hover:text-white hover:scale-105"><iconify-icon icon="solar:link-circle-linear" class="text-xl"></iconify-icon></a> Live Demo
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Text Mining App R Shiny</h3>
+                    <p class="text-slate-400 text-xs mb-6 leading-relaxed flex-grow">
+                        Dashboard interactif pour l'exploration textuelle avancée (NLP) et l'analyse de sentiments.
+                    </p>
+                    <div class="mt-auto border-t border-white/5 pt-4">
+                        <a href="https://github.com/SORADATA/shiny-text-mining-app/blob/main/Analytics_text/app.R" target="_blank" class="text-xs font-mono text-slate-500 flex items-center gap-1.5 hover:text-indigo-400 transition-colors hover:scale-105">
+                            VIEW SOURCE <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="glass-card rounded-2xl p-6 relative group hover:border-white/20 transition-colors flex flex-col hover-lift">
+                    <div class="mb-4 flex justify-between items-start">
+                        <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white group-hover:bg-purple-600 transition-all duration-300 shadow-lg">
+                            <iconify-icon icon="solar:shield-check-linear" class="text-xl"></iconify-icon>
+                        </div>
+                        <a href="https://github.com/SORADATA/SORADATA/tree/main/SAS" target="_blank" class="text-slate-500 hover:text-white hover:scale-105"><iconify-icon icon="solar:brands-github-linear" class="text-xl"></iconify-icon></a>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Credit Risk Analysis</h3>
+                    <p class="text-slate-400 text-xs mb-6 leading-relaxed flex-grow">
+                        Modélisation statistique sous SAS pour la prédiction de défauts de paiement et scoring bancaire.
+                    </p>
+                    <div class="mt-auto border-t border-white/5 pt-4">
+                        <a href="https://github.com/SORADATA/SORADATA/tree/main/SAS" target="_blank" class="text-xs font-mono text-slate-500 flex items-center gap-1.5 hover:text-purple-400 transition-colors hover:scale-105">
+                            VIEW SOURCE <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="bg-[#030304] z-10 border-t pt-16 pb-12 relative border-white/5">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-semibold text-white mb-6">Prêt à collaborer ?</h2>
+            <p class="text-slate-500 mb-8 text-sm max-w-md mx-auto">
+                Disponible pour opportunités ou collaborations. Transformons vos données ensemble.
+            </p>
+            <a href="mailto:sissokomoussa611@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-lg shadow-indigo-900/50 hover:scale-105 active:scale-95">
+                <iconify-icon icon="solar:letter-linear" class="text-lg"></iconify-icon> Me contacter
+            </a>
+           
+            <div class="mt-16 border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between text-[10px] text-slate-600">
+                <p>© 2026 Moussa Sissoko.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="https://linkedin.com" class="hover:text-white transition-colors hover:scale-105">LinkedIn</a>
+                    <a href="https://github.com/SORADATA" class="hover:text-white transition-colors hover:scale-105">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
     <script>
         // Reveal Animation Logic
@@ -321,7 +595,98 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
 
+        // Animation des points de données
+        function createDataPoints() {
+            const container = document.getElementById('dataPointsContainer');
+            if (!container) return;
+            
+            const points = 20;
+            
+            for (let i = 0; i < points; i++) {
+                const point = document.createElement('div');
+                point.className = 'data-point';
+                
+                // Position aléatoire
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Déplacement aléatoire pour l'animation
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = (Math.random() - 0.5) * 200;
+                
+                point.style.left = `${x}%`;
+                point.style.top = `${y}%`;
+                point.style.setProperty('--tx', `${tx}px`);
+                point.style.setProperty('--ty', `${ty}px`);
+                point.style.animationDelay = `${Math.random() * 2}s`;
+                point.style.animationDuration = `${2 + Math.random() * 2}s`;
+                
+                container.appendChild(point);
+            }
+        }
+
+        // Animation des caractères binaires
+        function createBinaryRain() {
+            const container = document.querySelector('body');
+            const chars = ['0', '1'];
+            
+            setInterval(() => {
+                const char = document.createElement('div');
+                char.className = 'binary-char';
+                char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                
+                // Position horizontale aléatoire
+                const left = Math.random() * 100;
+                char.style.left = `${left}%`;
+                
+                // Durée et délai aléatoires
+                const duration = 3 + Math.random() * 4;
+                const delay = Math.random() * 2;
+                
+                char.style.animationDuration = `${duration}s`;
+                char.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(char);
+                
+                // Supprimer après animation
+                setTimeout(() => {
+                    char.remove();
+                }, (duration + delay) * 1000);
+            }, 100);
+        }
+
+        // Effet de pulse sur le titre principal
+        function createTitlePulse() {
+            const mainTitle = document.querySelector('header h1');
+            if (!mainTitle) return;
+            
+            setInterval(() => {
+                mainTitle.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    mainTitle.style.transform = 'scale(1)';
+                }, 200);
+            }, 5000);
+        }
+
+        // Démarrer les animations au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            createDataPoints();
+            createBinaryRain();
+            createTitlePulse();
+            
+            // Effet de hover sur toutes les cartes glass
+            document.querySelectorAll('.glass-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px) scale(1.02)';
+                    card.style.transition = 'transform 0.3s ease, border-color 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
