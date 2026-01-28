@@ -473,8 +473,6 @@
             </div>
         </div>
     </section>
-
-
     <section id="projects" class="relative z-10 py-24 px-6 border-t border-white/5 bg-white/[0.01]">
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -490,12 +488,11 @@
                 </a>
             </div>
 
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
-               
+                
                 <div class="lg:col-span-2 glass-card rounded-2xl p-8 relative overflow-hidden group hover:border-white/20 transition-all duration-500 hover-lift">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-indigo-500/10 to-transparent blur-3xl -z-10 rounded-full"></div>
-                   
+                    
                     <div class="flex flex-col h-full justify-between relative z-10">
                         <div>
                             <div class="flex gap-2 mb-4">
@@ -507,7 +504,7 @@
                                 Système autonome de gestion de portefeuille. Utilise le clustering K-Means pour détecter les régimes de marché et XGBoost pour la prédiction directionnelle. Pipeline CI/CD automatisé via GitHub Actions.
                             </p>
                         </div>
-                       
+                        
                         <div class="flex items-center gap-4 mt-4">
                             <a href="https://cac40-smart-portfolio-asset.streamlit.app/" target="_blank" class="text-sm font-medium text-white flex items-center gap-2 hover:text-indigo-400 transition-colors bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:scale-105 active:scale-95">
                                 <iconify-icon icon="solar:play-circle-linear" class="text-lg"></iconify-icon> Live Demo
@@ -519,44 +516,52 @@
                     </div>
                 </div>
 
-
-                <div class="glass-card rounded-2xl p-6 relative group hover:border-white/20 transition-colors flex flex-col hover-lift">
-                    <div class="mb-4 flex justify-between items-start">
-                        <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white group-hover:bg-indigo-600 transition-all duration-300 shadow-lg">
-                            <iconify-icon icon="solar:chat-square-code-linear" class="text-xl"></iconify-icon>
+                <div class="glass-card rounded-2xl p-8 relative group hover:border-white/20 transition-colors flex flex-col h-full justify-between hover-lift">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-amber-500/5 to-transparent blur-2xl -z-10 rounded-full"></div>
+                    
+                    <div>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-amber-300 bg-amber-500/10 px-2 py-1 rounded">NLP</span>
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-blue-300 bg-blue-500/10 px-2 py-1 rounded">R Shiny</span>
                         </div>
-                        <a href="https://0qbv48-sissoko-moussa.shinyapps.io/Analytics_text/" target="_blank" class="text-slate-500 hover:text-white hover:scale-105"><iconify-icon icon="solar:link-circle-linear" class="text-xl"></iconify-icon></a> Live Demo
+                        
+                        <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-amber-200 transition-colors">Text Mining App</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                            Dashboard interactif pour l'exploration textuelle avancée et l'analyse de sentiments sur de larges corpus de données.
+                        </p>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Text Mining App R Shiny</h3>
-                    <p class="text-slate-400 text-xs mb-6 leading-relaxed flex-grow">
-                        Dashboard interactif pour l'exploration textuelle avancée (NLP) et l'analyse de sentiments.
-                    </p>
-                    <div class="mt-auto border-t border-white/5 pt-4">
-                        <a href="https://github.com/SORADATA/shiny-text-mining-app/blob/main/Analytics_text/app.R" target="_blank" class="text-xs font-mono text-slate-500 flex items-center gap-1.5 hover:text-indigo-400 transition-colors hover:scale-105">
-                            <iconify-icon icon="solar:arrow-right-linear"></iconify-icon> Live demo
+
+                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
+                        <a href="https://0qbv48-sissoko-moussa.shinyapps.io/Analytics_text/" target="_blank" class="text-sm font-medium text-white flex items-center gap-2 hover:text-amber-400 transition-colors bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:scale-105 active:scale-95">
+                            <iconify-icon icon="solar:play-circle-linear" class="text-lg"></iconify-icon> Live Demo
+                        </a>
+                        <a href="https://github.com/SORADATA/shiny-text-mining-app/blob/main/Analytics_text/app.R" target="_blank" class="text-sm font-medium text-slate-500 flex items-center gap-2 hover:text-white transition-colors px-2 hover:scale-105">
+                            <iconify-icon icon="solar:code-circle-linear" class="text-lg"></iconify-icon> Code
                         </a>
                     </div>
                 </div>
 
+                <div class="glass-card rounded-2xl p-8 relative group hover:border-white/20 transition-colors flex flex-col h-full justify-between hover-lift">
+                     <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-emerald-500/5 to-transparent blur-2xl -z-10 rounded-full"></div>
 
-                <div class="glass-card rounded-2xl p-6 relative group hover:border-white/20 transition-colors flex flex-col hover-lift">
-                    <div class="mb-4 flex justify-between items-start">
-                        <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white group-hover:bg-purple-600 transition-all duration-300 shadow-lg">
-                            <iconify-icon icon="solar:shield-check-linear" class="text-xl"></iconify-icon>
+                    <div>
+                        <div class="flex gap-2 mb-4">
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-300 bg-emerald-500/10 px-2 py-1 rounded">SAS</span>
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-cyan-300 bg-cyan-500/10 px-2 py-1 rounded">Scoring</span>
                         </div>
-                        <a href="https://github.com/SORADATA/SORADATA/tree/main/SAS" target="_blank" class="text-slate-500 hover:text-white hover:scale-105"><iconify-icon icon="solar:brands-github-linear" class="text-xl"></iconify-icon></a> Code
+
+                        <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-emerald-200 transition-colors">Credit Risk Analysis</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                            Modélisation statistique avancée sous SAS pour la prédiction de défauts de paiement et le scoring bancaire.
+                        </p>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Credit Risk Analysis</h3>
-                    <p class="text-slate-400 text-xs mb-6 leading-relaxed flex-grow">
-                        Modélisation statistique sous SAS pour la prédiction de défauts de paiement et scoring bancaire.
-                    </p>
-                    <div class="mt-auto border-t border-white/5 pt-4">
-                        <a href="https://github.com/SORADATA/SORADATA/tree/main/SAS" target="_blank" class="text-xs font-mono text-slate-500 flex items-center gap-1.5 hover:text-purple-400 transition-colors hover:scale-105">
-                            <iconify-icon icon="solar:arrow-right-linear"></iconify-icon> Code
+
+                    <div class="flex items-center gap-4 mt-auto pt-4 border-t border-white/5">
+                        <a href="https://github.com/SORADATA/SORADATA/tree/main/SAS" target="_blank" class="text-sm font-medium text-slate-500 flex items-center gap-2 hover:text-white transition-colors px-2 hover:scale-105">
+                            <iconify-icon icon="solar:code-circle-linear" class="text-lg"></iconify-icon> Code Source
                         </a>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -689,4 +694,5 @@
         });
     </script>
 </body>
+
 </html>
