@@ -1,8 +1,8 @@
 # 📊 Portfolio Data Analyst & Engineer
 
-Bienvenue sur mon portfolio professionnel ! Je suis **Moussa Sissoko**, Data Analyst spécialisé en finance quantitative, data engineering et machine learning.
+Bienvenue sur mon portfolio professionnel ! Je suis **Moussa Sissoko**, Data Analtics & Engineer spécialisé en finance quantitative, data engineering et machine learning.
 
-Découvrez mes projets d'analyse de données, pipelines ETL, modèles prédictifs et visualisations interactives développés dans le cadre de mon Master en Data Science et de mon alternance.
+Découvrez mes projets d'analyse de données, pipelines ETL, modèles prédictifs et visualisations interactives.
 
 🌐 **[Visitez mon portfolio en ligne →](https://soradata.github.io/Analyst-Portfolio)**
 
@@ -21,18 +21,11 @@ Découvrez mes projets d'analyse de données, pipelines ETL, modèles prédictif
 
 ![Portfolio Screenshot](https://github.com/user-attachments/assets/8872b575-2905-430a-8e44-f02fc04b7607)
 
+![alt text](images/analytics.png)
+
 ---
 
 ## 🚀 Projets phares
-
-### [CAC40 Portfolio Optimization](lien-vers-projet)
-Optimisation de portefeuille multi-actifs avec machine learning (XGBoost, LSTM) et analyse de risque (mean-variance, Sharpe ratio).
-
-### [Streamlit Data App](lien-vers-projet)
-Applications web interactives pour l'analyse financière et la visualisation de données en temps réel.
-
-### [Data Engineering Pipeline](lien-vers-projet)
-Architecture ETL sur GCP avec orchestration Airflow pour le traitement de données à grande échelle.
 
 > 📂 *Retrouvez tous mes projets détaillés sur le [portfolio web](https://soradata.github.io/Analyst-Portfolio)*
 
@@ -44,6 +37,21 @@ Architecture ETL sur GCP avec orchestration Airflow pour le traitement de donné
 **ML/Data** : Scikit-learn • XGBoost • TensorFlow • Pandas • NumPy  
 **Cloud & Outils** : GCP • BigQuery • Airflow • Git • Docker  
 **Visualisation** : Streamlit • Matplotlib • Seaborn • Plotly
+
+---
+
+## 📡 Traffic Analytics
+
+Ce portfolio est instrumenté avec **Google Analytics GA4** afin de mesurer l'engagement des visiteurs en temps réel.
+
+**Métriques suivies :**
+- 👥 Utilisateurs uniques & sessions actives
+- 🌍 Origine géographique des visiteurs
+- 🔗 Sources de trafic (LinkedIn, GitHub, recherche organique)
+- 📄 Pages et sections les plus consultées
+- ⏱️ Durée moyenne de session & taux d'engagement
+
+> *Cette démarche reflète un mindset data-driven appliqué à chaque projet — y compris ce portfolio lui-même.*
 
 ---
 
