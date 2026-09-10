@@ -7,8 +7,6 @@ Découvrez mes projets d'analyse de données, pipelines ETL, modèles prédictif
 🌐 **[Visitez mon portfolio en ligne →](https://soradata.github.io/Analyst-Portfolio)**
 
 
-🌐 **[ Google Analytics  →](https://analytics.google.com/analytics/web/?authuser=0#/a386337074p526867731/reports/intelligenthome?params=_u..nav%3Dmaui&collectionId=business-objectives)**
-
 ---
 
 ## 🎯 Domaines d'expertise
@@ -53,6 +51,8 @@ Ce portfolio est instrumenté avec **Google Analytics GA4** afin de mesurer l'en
 - 🔗 Sources de trafic (LinkedIn, GitHub, recherche organique)
 - 📄 Pages et sections les plus consultées
 - ⏱️ Durée moyenne de session & taux d'engagement
+
+- 🌐 **[ Google Analytics  →](https://analytics.google.com/analytics/web/?authuser=0#/a386337074p526867731/reports/intelligenthome?params=_u..nav%3Dmaui&collectionId=business-objectives)**
 
 > *Cette démarche reflète un mindset data-driven appliqué à chaque projet — y compris ce portfolio lui-même.*
 
