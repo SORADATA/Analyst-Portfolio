@@ -5,6 +5,7 @@ Bienvenue sur mon portfolio professionnel ! Je suis **Moussa Sissoko**, Data Ana
 Découvrez mes projets d'analyse de données, pipelines ETL, modèles prédictifs et visualisations interactives.
 
 🌐 **[Visitez mon portfolio en ligne →](https://soradata.github.io/Analyst-Portfolio)**
+🌐 **[ Google Analytics  →](https://analytics.google.com/analytics/web/?authuser=0#/a386337074p526867731/reports/intelligenthome?params=_u..nav%3Dmaui&collectionId=business-objectives)**
 
 ---
 
