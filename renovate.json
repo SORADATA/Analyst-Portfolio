@@ -1,11 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "schedule:weekly"],
+  "extends": ["config:recommended"],
   "timezone": "Europe/Paris",
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "description": "Grouper les mises à jour de Next.js et de ses paquets liés",
+      "description": "Grouper Next.js et ses paquets liés",
       "matchPackageNames": ["next", "@next/third-parties", "eslint-config-next"],
       "groupName": "next"
     },
@@ -15,7 +15,17 @@
       "groupName": "react"
     },
     {
-      "description": "Fusionner seules les mises à jour mineures et correctifs des outils de développement",
+      "description": "Grouper les actions GitHub",
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
+    },
+    {
+      "description": "Les mises à jour majeures demandent mon accord",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Fusion automatique des correctifs et mises à jour mineures des outils de développement",
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
