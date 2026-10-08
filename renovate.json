@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "schedule:weekly"],
+  "timezone": "Europe/Paris",
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "description": "Grouper les mises à jour de Next.js et de ses paquets liés",
+      "matchPackageNames": ["next", "@next/third-parties", "eslint-config-next"],
+      "groupName": "next"
+    },
+    {
+      "description": "Grouper React",
+      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
+      "groupName": "react"
+    },
+    {
+      "description": "Fusionner seules les mises à jour mineures et correctifs des outils de développement",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ]
+}
