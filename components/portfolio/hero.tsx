@@ -11,14 +11,14 @@ const domains = [
   { label: 'BI', icon: BarChart3, tone: 'bg-brand-teal' },
   { label: 'Orchestration', icon: Workflow, tone: 'bg-accent' },
   { label: 'Machine Learning', icon: BrainCircuit, tone: 'bg-brand-indigo' },
-  { label: 'Risque', icon: ShieldCheck, tone: 'bg-brand-teal' },
+  { label: 'Qualité & Gouvernance', icon: ShieldCheck, tone: 'bg-brand-teal' },
 ]
 
 const stats = [
   { value: '3', label: 'Institutions publiques & financières' },
-  { value: '15+', label: 'Projets data open source' },
-  { value: 'Bac+5', label: 'Statistique pour la finance' },
-  { value: '100%', label: 'Pipelines testés & documentés' },
+  { value: '5', label: 'Projets data en ligne' },
+  { value: 'Bac+5', label: 'Statistique & Data' },
+  { value: 'ETL · ELT', label: 'Pipelines testés & documentés' },
 ]
 
 function DomainPills({ className }: { className?: string }) {
@@ -43,19 +43,19 @@ export function Hero() {
   return (
     <section id="top" aria-labelledby="hero-title">
       <div className="mx-auto max-w-4xl px-6 pb-14 pt-16 text-center md:pb-16 md:pt-24">
-        <Eyebrow>Data Analytics & Engineer · Finance & Économie · Paris</Eyebrow>
+        <Eyebrow>Data Analyst & Analytics Engineer · Paris · Disponible</Eyebrow>
 
         <h1
           id="hero-title"
           className="mt-7 text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-7xl"
         >
-          Transformer la donnée financière en décisions
+          Transformer la donnée en décisions fiables
         </h1>
 
         <p className="mx-auto mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-foreground/80 md:text-xl">
           Je suis Moussa Sissoko. De l&apos;ingestion à la restitution, je conçois des pipelines de
-          données fiables, des modèles prédictifs et des dashboards qui accélèrent la décision
-          stratégique.
+          données fiables, des modèles prédictifs et des dashboards de pilotage, avec une
+          expertise en finance et en économie.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -85,13 +85,13 @@ export function Hero() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl sm:aspect-[16/9] md:aspect-[21/9] md:rounded-[2rem]">
             <Image
               src={heroWorkspace}
-              alt="Poste de travail avec des tableaux de bord financiers à l'écran"
+              alt="Poste de travail avec des tableaux de bord de données à l'écran"
               fill
               priority
               sizes="(min-width: 1400px) 1400px, 100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/85 via-foreground/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
             <dl className="absolute inset-x-0 bottom-0 grid grid-cols-2 gap-px md:grid-cols-4">
               {stats.map((s) => (
