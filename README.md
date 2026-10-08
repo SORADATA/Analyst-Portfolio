@@ -1,4 +1,4 @@
-# Moussa Sissoko — Portfolio Data Analyst & Analytics Engineer
+# Portfolio Data Analyst & Analytics Engineer
 
 Portfolio professionnel : pipelines de données, qualité et gouvernance, indicateurs de pilotage et modélisation.
 
