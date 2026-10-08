@@ -1,6 +1,7 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { IBM_Plex_Mono, Plus_Jakarta_Sans } from 'next/font/google'
+import { ThemeProvider } from '@/components/portfolio/theme-provider'
 import './globals.css'
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta' })
@@ -10,30 +11,38 @@ const plexMono = IBM_Plex_Mono({
   variable: '--font-plex-mono',
 })
 
+const siteUrl = 'https://soradata.github.io/Analyst-Portfolio/'
+
 export const metadata: Metadata = {
-  title: 'Moussa SISSOKO | Data Analytics & Engineer',
+  metadataBase: new URL(siteUrl),
+  title: 'Moussa SISSOKO | Data Analyst & Analytics Engineer',
   description:
-    "Data Analytics & Engineer spécialisé en finance et en économie. Pipelines de données, modèles prédictifs et dashboards pour éclairer la décision stratégique.",
+    'Data Analyst & Analytics Engineer. Pipelines de données fiables, modèles prédictifs et dashboards de pilotage, avec une expertise en finance et en économie.',
   keywords: [
-    'Data Engineer',
     'Data Analyst',
-    'Finance',
-    'Airflow',
+    'Analytics Engineer',
+    'Data Engineer',
+    'SQL',
+    'Python',
     'dbt',
+    'Airflow',
     'Snowflake',
+    'BigQuery',
     'Power BI',
+    'ETL',
     'Machine Learning',
+    'Paris',
     'Moussa Sissoko',
   ],
   authors: [{ name: 'Moussa SISSOKO' }],
   openGraph: {
-    title: 'Moussa SISSOKO | Data Analytics & Engineer',
+    title: 'Moussa SISSOKO | Data Analyst & Analytics Engineer',
     description:
-      'Pipelines de données, modèles prédictifs et dashboards pour la finance et l’économie.',
+      'Pipelines de données, modèles prédictifs et dashboards pour piloter la performance et éclairer la décision.',
+    url: siteUrl,
     type: 'website',
     locale: 'fr_FR',
   },
-  generator: 'v0.app',
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
@@ -45,8 +54,11 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
-  themeColor: '#ffffff',
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b0b14' },
+  ],
 }
 
 export default function RootLayout({
@@ -55,10 +67,23 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={`${jakarta.variable} ${plexMono.variable} scroll-smooth bg-background`}>
-      <body className="font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+    <html
+      lang="fr"
+      suppressHydrationWarning
+      className={`${jakarta.variable} ${plexMono.variable} scroll-smooth`}
+    >
+      <body className="bg-background font-sans text-foreground antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+        {process.env.NODE_ENV === 'production' && (
+          <GoogleAnalytics gaId="G-0LXZTSKX01" />
+        )}
       </body>
     </html>
   )

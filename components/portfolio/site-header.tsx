@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { profile } from '@/lib/portfolio-data'
 import { CtaLink } from './cta-link'
+import { ThemeToggle } from './theme-toggle'
 
 const links = [
   { href: '#expertise', label: 'Expertise' },
@@ -38,22 +39,26 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
           <CtaLink href="#contact" size="sm">
             Me contacter
           </CtaLink>
         </div>
 
-        <button
-          type="button"
-          className="flex size-10 items-center justify-center rounded-md border border-border md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-          onClick={() => setOpen((o) => !o)}
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            className="flex size-10 items-center justify-center rounded-md border border-border"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+            onClick={() => setOpen((o) => !o)}
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
       </div>
 
       {open && (
