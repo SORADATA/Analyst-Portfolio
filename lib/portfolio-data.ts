@@ -105,18 +105,9 @@ export const projects: Project[] = [
   {
     title: 'AlphaEdge — Portefeuille multi-marchés',
     category: 'Finance quantitative · MLOps',
-    summary:
-      'Système quantitatif multi-marchés (CAC 40, NASDAQ, marchés émergents) : un ensemble empilé (XGBoost, LightGBM, Ridge calibré) estime chaque mois la probabilité de hausse de chaque action, puis alimente un portefeuille Black-Litterman sous contrainte de risque (CVaR 95 %, covariance Ledoit-Wolf). Validation anti-fuite temporelle (purged CV avec embargo, walk-forward) et pipeline quotidien automatisé via GitHub Actions. Chaque marché se configure par un simple fichier, et un nouveau modèle n’est mis en production que s’il bat le champion (registre MLflow, test shadow).',
-    stack: [
-      'Python',
-      'XGBoost',
-      'LightGBM',
-      'Optuna',
-      'MLflow',
-      'PyPortfolioOpt',
-      'GitHub Actions',
-      'Streamlit',
-    ],
+        summary:
+      'Système quantitatif multi-marchés (CAC 40, NASDAQ, émergents) : ensemble XGBoost + LightGBM, portefeuille Black-Litterman sous contrainte CVaR, validation anti-fuite et pipeline MLOps quotidien automatisé.',
+    stack: ['Python', 'XGBoost', 'MLflow', 'PyPortfolioOpt', 'GitHub Actions', 'Streamlit'],
     repo: 'https://github.com/SORADATA/Alphaedge-quant-analytics',
     demo: 'https://cac40-smart-portfolio-asset.streamlit.app/',
     featured: true,

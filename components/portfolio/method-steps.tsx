@@ -1,24 +1,25 @@
 'use client'
 
 import { useState } from 'react'
-import { Check } from 'lucide-react'
 import { approach } from '@/lib/portfolio-data'
 import { cn } from '@/lib/utils'
+
+const GROW = [3.2, 1.7, 1]
 
 export function MethodSteps() {
   const [active, setActive] = useState(0)
 
   return (
-    <ol className="flex flex-col gap-px overflow-hidden rounded-2xl border border-border bg-border md:flex-row lg:col-span-8">
+    <ol className="flex flex-col gap-3 md:h-[340px] md:flex-row lg:col-span-8">
       {approach.map((item, i) => {
         const isActive = active === i
+        const distance = Math.abs(active - i)
+
         return (
           <li
             key={item.step}
-            className={cn(
-              'transition-[flex-grow,background-color] duration-500 ease-out md:basis-0',
-              isActive ? 'bg-violet-700 text-white md:grow-[2.4]' : 'bg-background md:grow'
-            )}
+            style={{ flexGrow: GROW[Math.min(distance, 2)] }}
+            className="min-w-0 transition-[flex-grow] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:basis-0"
           >
             <button
               type="button"
@@ -26,12 +27,17 @@ export function MethodSteps() {
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
               aria-expanded={isActive}
-              className="flex h-full w-full cursor-pointer flex-col p-7 text-left"
+              className={cn(
+                'group relative flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-2xl border p-6 text-left transition-colors duration-500',
+                isActive
+                  ? 'border-violet-500/40 bg-gradient-to-br from-violet-500/15 via-violet-500/5 to-transparent shadow-[0_0_40px_-12px] shadow-violet-500/40'
+                  : 'border-border/60 bg-card/30 hover:border-violet-500/30'
+              )}
             >
               <span
                 className={cn(
-                  'font-mono text-sm font-semibold transition-colors duration-500',
-                  isActive ? 'text-white' : 'text-accent'
+                  'font-mono text-xs font-semibold tracking-widest transition-colors duration-500',
+                  isActive ? 'text-violet-500' : 'text-muted-foreground'
                 )}
               >
                 {`0${i + 1}`}
@@ -39,8 +45,8 @@ export function MethodSteps() {
 
               <span
                 className={cn(
-                  'mt-6 block font-semibold tracking-tight transition-all duration-500',
-                  isActive ? 'text-2xl text-white' : 'text-lg text-foreground/70'
+                  'mt-5 block font-semibold leading-tight tracking-tight text-foreground transition-all duration-500',
+                  isActive ? 'text-2xl' : 'text-base text-foreground/70'
                 )}
               >
                 {item.step}
@@ -48,8 +54,8 @@ export function MethodSteps() {
 
               <span
                 className={cn(
-                  'mt-2 block text-[15px] leading-relaxed transition-colors duration-500',
-                  isActive ? 'text-white/85' : 'text-muted-foreground'
+                  'mt-3 block text-sm leading-relaxed text-muted-foreground transition-all duration-500',
+                  isActive ? 'translate-y-0 opacity-100 delay-150' : 'pointer-events-none h-0 translate-y-2 overflow-hidden opacity-0'
                 )}
               >
                 {item.text}
@@ -58,37 +64,29 @@ export function MethodSteps() {
               <span
                 aria-hidden={!isActive}
                 className={cn(
-                  'grid transition-all duration-500 ease-out',
-                  isActive ? 'mt-6 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  'mt-auto block space-y-2 pt-5 transition-all duration-500',
+                  isActive ? 'translate-y-0 opacity-100 delay-200' : 'pointer-events-none translate-y-3 opacity-0'
                 )}
               >
-                <span className="block overflow-hidden">
-                  <span className="block space-y-2.5">
-                    {item.points.map((p) => (
-                      <span key={p} className="flex items-start gap-2.5 text-sm leading-snug text-white/90">
-                        <Check className="mt-0.5 size-4 shrink-0 text-white" aria-hidden="true" />
-                        {p}
-                      </span>
-                    ))}
-                  </span>
-
-                  <span className="mt-5 flex flex-wrap gap-1.5">
-                    {item.tools.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-sm bg-white/15 px-2 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-white"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </span>
-
-                  <span className="mt-5 block border-t border-white/20 pt-4 text-xs text-white/75">
-                    <span className="font-mono uppercase tracking-wide">Livrable</span>
-                    <span className="mt-1 block text-sm font-medium text-white">{item.deliverable}</span>
-                  </span>
+                <span className="flex flex-wrap gap-1.5">
+                  {item.tools.slice(0, 4).map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-md border border-violet-500/25 bg-violet-500/10 px-2 py-1 font-mono text-[10px] font-medium uppercase tracking-wide text-foreground/80"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </span>
               </span>
+
+              <span
+                aria-hidden="true"
+                className={cn(
+                  'absolute inset-x-0 bottom-0 h-0.5 origin-left bg-violet-500 transition-transform duration-700',
+                  isActive ? 'scale-x-100' : 'scale-x-0'
+                )}
+              />
             </button>
           </li>
         )
