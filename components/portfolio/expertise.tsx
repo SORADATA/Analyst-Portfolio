@@ -1,7 +1,8 @@
 import { BarChart3, BrainCircuit, Database, LineChart } from 'lucide-react'
-import { approach, expertise } from '@/lib/portfolio-data'
+import { expertise } from '@/lib/portfolio-data'
 import { cn } from '@/lib/utils'
 import { SectionHeading } from './section-heading'
+import { MethodSteps } from './method-steps'
 
 const visuals = [
   { icon: Database, tone: 'bg-brand-indigo' },
@@ -59,15 +60,7 @@ export function Expertise() {
           <div className="lg:col-span-4">
             <SectionHeading id="methode-title" label="Méthode" title="Trois étapes, zéro approximation" />
           </div>
-          <ol className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3 lg:col-span-8">
-            {approach.map((item, i) => (
-              <li key={item.step} className="bg-background p-7">
-                <span className="font-mono text-sm font-semibold text-accent">{`0${i + 1}`}</span>
-                <p className="mt-6 text-lg font-semibold tracking-tight">{item.step}</p>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{item.text}</p>
-              </li>
-            ))}
-          </ol>
+          <MethodSteps />
         </div>
       </div>
     </section>

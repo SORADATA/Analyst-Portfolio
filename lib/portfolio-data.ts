@@ -1,6 +1,6 @@
 export const profile = {
   name: 'Moussa SISSOKO',
-  role: 'Data Analytics & Engineer',
+  role: 'Data Analyst & Analytics Engineer',
   focus: 'Finance & Économie',
   email: 'sissokomoussa611@gmail.com',
   github: 'https://github.com/SORADATA',
@@ -43,13 +43,14 @@ export const experiences = [
   {
     company: "Ministère de l'Économie et des Finances",
     short: 'MEF',
-    role: 'Data & Analytics Engineer',
-    period: '2025 — 2026',
+    role: 'Data & Analytics Engineer — Alternance',
+    period: '2025 — Août 2026',
     location: 'Paris',
     highlights: [
-      'Construction et maintenance des pipelines de données (ETL).',
-      'Automatisation des workflows avec Apache Airflow et structuration SQL.',
-      'Gouvernance de la donnée et conception de dashboards stratégiques.',
+      'Ai conçu et mis en production plus de 4 pipelines de données de bout en bout, orchestrés avec Apache Airflow, de la collecte multi-sources (API, applications métiers, tableurs collaboratifs) jusqu’à la base décisionnelle.',
+      'Ai assuré le suivi, la maintenance et l’évolution des pipelines en production : correctifs, gestion des partitions, évolutions de configuration et fiabilisation continue.',
+      'Ai structuré les données en modèles SQL versionnés avec Git, couverts par des contrôles qualité automatisés et une documentation maintenue à jour.',
+      'Ai contribué à l’architecture cible (traitement, base décisionnelle PostgreSQL, datavisualisation) et livré des tableaux de bord de pilotage aux équipes métiers.',
     ],
   },
   {
@@ -59,8 +60,9 @@ export const experiences = [
     period: 'Avr. — Août 2025',
     location: 'France',
     highlights: [
-      'Développement d’outils NLP sur données bancaires (R Shiny).',
-      'Analyses statistiques macroéconomiques pour appuyer les études internes.',
+      'Ai développé une application R Shiny de text mining pour exploiter des corpus de documents bancaires (exploration, scoring de sentiment, synthèse d’insights).',
+      'Ai mené des analyses statistiques et macroéconomiques pour appuyer les études internes et éclairer la décision.',
+      'Ai structuré et documenté les traitements pour les rendre reproductibles par les équipes.',
     ],
   },
   {
@@ -70,8 +72,8 @@ export const experiences = [
     period: 'Été 2023',
     location: 'Angers',
     highlights: [
-      'Pilotage financier via Power BI.',
-      'Modélisation budgétaire sous Excel et fiabilisation des flux comptables.',
+      'Ai assuré le pilotage financier via des tableaux de bord Power BI.',
+      'Ai construit des modèles budgétaires sous Excel et fiabilisé les flux comptables.',
     ],
   },
 ]
@@ -101,11 +103,20 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'AlphaEdge — Allocation CAC 40',
+    title: 'AlphaEdge — Portefeuille multi-marchés',
     category: 'Finance quantitative · MLOps',
     summary:
-      'Framework d’allocation d’actifs : feature engineering, détection de régimes de marché (K-Means), prédiction (XGBoost, LightGBM) et optimisation de portefeuille (Black-Litterman, CVaR, Sharpe, Sortino). Exécution automatisée et suivi des métriques en CI/CD.',
-    stack: ['Python', 'XGBoost', 'PyPortfolioOpt', 'Streamlit', 'CI/CD'],
+      'Système quantitatif multi-marchés (CAC 40, NASDAQ, marchés émergents) : un ensemble empilé (XGBoost, LightGBM, Ridge calibré) estime chaque mois la probabilité de hausse de chaque action, puis alimente un portefeuille Black-Litterman sous contrainte de risque (CVaR 95 %, covariance Ledoit-Wolf). Validation anti-fuite temporelle (purged CV avec embargo, walk-forward) et pipeline quotidien automatisé via GitHub Actions. Chaque marché se configure par un simple fichier, et un nouveau modèle n’est mis en production que s’il bat le champion (registre MLflow, test shadow).',
+    stack: [
+      'Python',
+      'XGBoost',
+      'LightGBM',
+      'Optuna',
+      'MLflow',
+      'PyPortfolioOpt',
+      'GitHub Actions',
+      'Streamlit',
+    ],
     repo: 'https://github.com/SORADATA/Alphaedge-quant-analytics',
     demo: 'https://cac40-smart-portfolio-asset.streamlit.app/',
     featured: true,
@@ -154,17 +165,46 @@ export const projects: Project[] = [
   },
 ]
 
-export const approach = [
+export type ApproachStep = {
+  step: string
+  text: string
+  points: string[]
+  tools: string[]
+  deliverable: string
+}
+
+export const approach: ApproachStep[] = [
   {
-    step: 'Collecter & fiabiliser',
-    text: 'Ingestion multi-sources, contrôles qualité et tests systématiques pour une donnée digne de confiance.',
+    step: 'Collecter & structurer',
+    text: 'Je rassemble des sources hétérogènes dans un socle unique et maîtrisé.',
+    points: [
+      'Applications métiers, tableurs collaboratifs et sources externes via API',
+      'Dépôt de fichiers et stockage objet pour les exports manuels',
+      'Extraction planifiée et reproductible, sans intervention manuelle',
+    ],
+    tools: ['APIs REST', 'Grist', 'MinIO', 'Python'],
+    deliverable: 'Données brutes centralisées et traçables',
   },
   {
-    step: 'Modéliser',
-    text: 'Modèles SQL documentés, statistiques rigoureuses et machine learning adapté au problème métier.',
+    step: 'Traiter & fiabiliser',
+    text: 'Je transforme la donnée en base décisionnelle documentée et testée.',
+    points: [
+      'Pipelines ETL orchestrés avec Apache Airflow',
+      'Modèles SQL versionnés avec Git, tests qualité automatisés',
+      'Base décisionnelle PostgreSQL et documentation à jour',
+    ],
+    tools: ['Apache Airflow', 'PostgreSQL', 'SQL', 'dbt', 'Git'],
+    deliverable: 'Base décisionnelle fiable et documentée',
   },
   {
-    step: 'Restituer',
-    text: 'Dashboards clairs et indicateurs actionnables pour éclairer la décision stratégique.',
+    step: 'Restituer & exploiter',
+    text: 'Je rends la donnée lisible et utile à la décision.',
+    points: [
+      'Tableaux de bord clairs, indicateurs actionnables',
+      'Statistiques et machine learning adaptés au problème métier',
+      'Accès autonome pour les équipes métiers',
+    ],
+    tools: ['Dataviz', 'Power BI', 'Streamlit', 'Superset'],
+    deliverable: 'Dashboards de pilotage pour la décision',
   },
 ]
