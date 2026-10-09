@@ -1,5 +1,6 @@
 const isGitHubPages = process.env.GITHUB_PAGES === 'true'
 const basePath = isGitHubPages ? '/Analyst-Portfolio' : ''
+const devBasePath = process.env.DEV_BASE_PATH || ''
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -12,6 +13,7 @@ const nextConfig = {
   ...(isGitHubPages
     ? { output: 'export', basePath, trailingSlash: true }
     : {
+        ...(devBasePath ? { basePath: devBasePath } : {}),
         async headers() {
           return [
             {
