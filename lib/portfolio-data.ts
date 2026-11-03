@@ -2,7 +2,7 @@ export const profile = {
   name: 'Moussa SISSOKO',
   role: 'Data Analyst & Analytics Engineer',
   focus: 'Finance & Économie',
-  email: 'sissokomoussa611@gmail.com',
+  email: 'moussa.sissoko.contact@gmail.com',
   github: 'https://github.com/SORADATA',
   cv: 'https://drive.google.com/file/d/1kAiQGEpQX7gRSh-k1NaBseyeRxMCACtH/view?usp=drive_link',
   location: 'Paris, France',
