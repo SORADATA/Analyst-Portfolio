@@ -4,7 +4,7 @@ export const profile = {
   focus: 'Finance & Économie',
   email: 'moussa.sissoko.contact@gmail.com',
   github: 'https://github.com/SORADATA',
-  cv: 'https://drive.google.com/file/d/1kAiQGEpQX7gRSh-k1NaBseyeRxMCACtH/view?usp=drive_link',
+  cv: 'https://drive.google.com/file/d/1tkji0v-oDzgJ8LT-O-jwV8kVVsWjH8yq/view?usp=sharing',
   location: 'Paris, France',
 }
 
