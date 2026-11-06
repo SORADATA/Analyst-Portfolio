@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 type CtaLinkProps = {
   href: string
   children: React.ReactNode
-  variant?: 'accent' | 'outline' | 'light'
+  variant?: 'accent' | 'outline' | 'light' | 'onDark'
   size?: 'sm' | 'lg'
   external?: boolean
   className?: string
@@ -22,6 +22,11 @@ const variants = {
   light: {
     root: 'bg-background text-foreground hover:bg-background/90',
     box: 'bg-foreground text-background',
+  },
+  // Pour les surfaces toujours sombres (indépendant du thème clair/sombre)
+  onDark: {
+    root: 'bg-white text-neutral-950 hover:bg-white/90',
+    box: 'bg-neutral-950 text-white',
   },
 }
 
