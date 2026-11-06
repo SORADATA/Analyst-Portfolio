@@ -9,23 +9,28 @@ export function Contact() {
   return (
     <>
       <section aria-labelledby="contact-title" id="contact" className="scroll-mt-20 px-4 pb-12 md:px-6">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-foreground p-6 text-background md:rounded-[2rem] md:p-12">
+        {/* Utilisation de la carte sombre élégante avec les variables de design */}
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-foreground p-6 text-background md:rounded-[2.5rem] md:p-12 shadow-2xl">
           
           <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10">
             
-            {/* Image importée via Next Image */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background/5 border border-white/10 md:col-span-5 md:aspect-square">
-              <Image 
-                src={contactImage} 
-                alt="Illustration collaboration data" 
-                fill
-                sizes="(min-width: 768px) 40vw, 100vw"
-                className="object-cover transition-transform duration-500 hover:scale-105"
-              />
+            {/* Colonne de gauche : Image avec un cadre stylisé et harmonisé */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background/5 border border-white/10 p-3 md:col-span-5 md:aspect-square flex items-center justify-center">
+              <div className="relative h-full w-full overflow-hidden rounded-xl bg-black/20">
+                <Image 
+                  src={contactImage} 
+                  alt="Illustration collaboration data" 
+                  fill
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+              </div>
             </div>
 
-            {/* Colonne de droite */}
+            {/* Colonne de droite : Contenu et CTA (7 colonnes) */}
             <div className="flex flex-col justify-center text-left md:col-span-7">
+              
               <p className="inline-flex items-center gap-2.5 font-mono text-xs font-medium uppercase tracking-wider text-background/80">
                 <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
                 Contact
@@ -50,6 +55,7 @@ export function Contact() {
               <p className="mt-6 font-mono text-xs text-background/60">
                 {profile.email}
               </p>
+
             </div>
 
           </div>

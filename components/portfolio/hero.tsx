@@ -82,27 +82,28 @@ export function Hero() {
             <DomainPills className="flex-nowrap" />
           </div>
 
-          {/* Image principale épurée */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl sm:aspect-[16/9] md:aspect-[21/9] md:rounded-[2rem] border border-white/10 shadow-2xl">
-            <Image
-              src={heroWorkspace}
-              alt="Poste de travail avec des tableaux de bord de données à l'écran"
-              fill
-              priority
-              sizes="(min-width: 1400px) 1400px, 100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          {/* Cadre de l'image épuré et harmonisé avec l'UI */}
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-foreground p-3 md:rounded-[2.5rem] md:p-4 shadow-2xl">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-black/20 sm:aspect-[16/9] md:aspect-[21/9]">
+              <Image
+                src={heroWorkspace}
+                alt="Poste de travail avec des tableaux de bord de données à l'écran"
+                fill
+                priority
+                sizes="(min-width: 1400px) 1400px, 100vw"
+                className="object-cover transition-transform duration-500 hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            </div>
           </div>
 
-          {/* Barre de KPI positionnée en dessous de l'image (style Modeo) */}
-          <dl className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 rounded-3xl border border-white/10 bg-foreground p-6 text-background md:p-8">
+          {/* Barre de KPI positionnée en dessous avec des arrondis homogènes (md:rounded-[2.5rem]) */}
+          <dl className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 rounded-3xl border border-white/10 bg-foreground p-6 text-background md:rounded-[2.5rem] md:p-8 shadow-xl">
             {stats.map((s, index) => (
               <div 
                 key={s.label} 
                 className={cn(
                   "flex flex-col justify-between",
-                  // Ajout de séparateurs subtils en desktop entre les colonnes
                   index !== stats.length - 1 && "md:border-r md:border-white/10 md:pr-6"
                 )}
               >

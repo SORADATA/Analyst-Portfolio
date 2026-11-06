@@ -43,7 +43,7 @@ export const experiences = [
   {
     company: "Ministère de l'Économie et des Finances",
     short: 'MEF',
-    role: 'Data & Analytics Engineer — Alternance',
+    role: 'Data & Analytics Engineer',
     period: '2025 — Août 2026',
     location: 'Paris',
     highlights: [
@@ -56,7 +56,7 @@ export const experiences = [
   {
     company: 'Banque de France',
     short: 'BdF',
-    role: 'Data Analyst — Stage',
+    role: 'Data Analyst',
     period: 'Avr. — Août 2025',
     location: 'France',
     highlights: [
