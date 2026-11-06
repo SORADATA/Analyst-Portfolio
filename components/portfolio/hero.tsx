@@ -1,7 +1,7 @@
 import { BarChart3, BrainCircuit, Database, LineChart, ShieldCheck, Workflow } from 'lucide-react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import heroWorkspace from '@/public/images/hero-workspace.png'
+import heroWorkspace from '@/public/images/architecture_accueil.png'
 import { CtaLink } from './cta-link'
 import { Eyebrow } from './section-heading'
 
