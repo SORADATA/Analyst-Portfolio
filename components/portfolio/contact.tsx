@@ -1,6 +1,4 @@
-import Image from 'next/image'
 import { profile } from '@/lib/portfolio-data'
-import contactImage from '@/public/images/contact.png'
 import { CtaLink } from './cta-link'
 
 export function Contact() {
@@ -9,22 +7,39 @@ export function Contact() {
   return (
     <>
       <section aria-labelledby="contact-title" id="contact" className="scroll-mt-20 px-4 pb-12 md:px-6">
-        {/* Utilisation de la carte sombre élégante avec les variables de design */}
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-foreground p-6 text-background md:rounded-[2.5rem] md:p-12 shadow-2xl">
+        {/* Carte principale avec un fond sombre profond et des bordures soignées */}
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-foreground p-6 text-background md:rounded-[2.5rem] md:p-12 shadow-2xl">
           
-          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10">
+          {/* Effets lumineux d'arrière-plan (style bannières tech modernes) */}
+          <div className="absolute -left-20 top-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-indigo-500/25 blur-[90px] pointer-events-none" />
+          <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-accent/20 blur-[100px] pointer-events-none" />
+
+          <div className="relative z-10 grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10">
             
-            {/* Colonne de gauche : Image avec un cadre stylisé et harmonisé */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background/5 border border-white/10 p-3 md:col-span-5 md:aspect-square flex items-center justify-center">
-              <div className="relative h-full w-full overflow-hidden rounded-xl bg-black/20">
-                <Image 
-                  src={contactImage} 
-                  alt="Illustration collaboration data" 
-                  fill
-                  sizes="(min-width: 768px) 40vw, 100vw"
-                  className="object-cover transition-transform duration-500 hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+            {/* Colonne de gauche : Élément visuel abstrait dynamique (lignes de flux de données lumineuses) */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-black/40 border border-white/10 p-6 md:col-span-5 md:aspect-square flex flex-col justify-between shadow-inner">
+              
+              {/* Simulation de flux lumineux et de courbes de données stylisées */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.indigo.500/15),theme(colors.accent/15))] opacity-75 blur-2xl pointer-events-none" />
+              
+              <div className="relative z-10 flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-background/60">Pipeline Status</span>
+                <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              </div>
+
+              <div className="relative z-10 space-y-3">
+                <div className="h-1.5 w-3/4 rounded-full bg-white/20 overflow-hidden">
+                  <div className="h-full w-2/3 rounded-full bg-accent" />
+                </div>
+                <div className="h-1.5 w-1/2 rounded-full bg-white/15" />
+                <p className="font-mono text-xs text-background/70 pt-2">
+                   End-to-end data processing active.
+                </p>
+              </div>
+
+              <div className="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[11px] text-background/60">
+                <span>LATENCY: 12ms</span>
+                <span className="text-accent font-semibold">SECURE</span>
               </div>
             </div>
 
