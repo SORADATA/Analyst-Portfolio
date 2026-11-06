@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import { profile } from '@/lib/portfolio-data'
+import contactImage from '@/public/images/contact.png'
 import { CtaLink } from './cta-link'
 
 export function Contact() {
@@ -7,23 +9,23 @@ export function Contact() {
   return (
     <>
       <section aria-labelledby="contact-title" id="contact" className="scroll-mt-20 px-4 pb-12 md:px-6">
-        {/* Utilisation de ta carte sombre élégante avec tes variables de design */}
         <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-foreground p-6 text-background md:rounded-[2rem] md:p-12">
           
           <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10">
             
-            {/* Colonne de gauche : Ton image contact.png intégrée ici */}
+            {/* Image importée via Next Image */}
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background/5 border border-white/10 md:col-span-5 md:aspect-square">
-              <img 
-                src="/images/contact.png" 
+              <Image 
+                src={contactImage} 
                 alt="Illustration collaboration data" 
-                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
 
-            {/* Colonne de droite : Contenu et CTA (7 colonnes) */}
+            {/* Colonne de droite */}
             <div className="flex flex-col justify-center text-left md:col-span-7">
-              
               <p className="inline-flex items-center gap-2.5 font-mono text-xs font-medium uppercase tracking-wider text-background/80">
                 <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
                 Contact
@@ -48,7 +50,6 @@ export function Contact() {
               <p className="mt-6 font-mono text-xs text-background/60">
                 {profile.email}
               </p>
-
             </div>
 
           </div>

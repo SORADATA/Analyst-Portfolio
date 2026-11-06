@@ -82,7 +82,8 @@ export function Hero() {
             <DomainPills className="flex-nowrap" />
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl sm:aspect-[16/9] md:aspect-[21/9] md:rounded-[2rem]">
+          {/* Image principale épurée */}
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl sm:aspect-[16/9] md:aspect-[21/9] md:rounded-[2rem] border border-white/10 shadow-2xl">
             <Image
               src={heroWorkspace}
               alt="Poste de travail avec des tableaux de bord de données à l'écran"
@@ -91,28 +92,28 @@ export function Hero() {
               sizes="(min-width: 1400px) 1400px, 100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-
-            <dl className="absolute inset-x-4 bottom-4 hidden grid-cols-4 divide-x divide-white/15 overflow-hidden rounded-2xl border border-white/20 bg-black/35 text-white backdrop-blur-xl md:grid lg:inset-x-6 lg:bottom-6">
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col-reverse justify-end px-6 py-5">
-                  <dt className="mt-1 text-sm leading-snug text-white/75">{s.label}</dt>
-                  <dd className="whitespace-nowrap text-3xl font-semibold tracking-tight lg:text-4xl">
-                    {s.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </div>
 
-          <dl className="mt-3 grid grid-cols-2 gap-3 md:hidden">
-            {stats.map((s) => (
-              <div key={s.label} className="flex flex-col-reverse justify-end rounded-2xl border border-border bg-muted p-4">
-                <dt className="mt-1 text-xs leading-snug text-muted-foreground">{s.label}</dt>
-                <dd className="whitespace-nowrap text-2xl font-semibold tracking-tight">{s.value}</dd>
+          {/* Barre de KPI positionnée en dessous de l'image (style Modeo) */}
+          <dl className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 rounded-3xl border border-white/10 bg-foreground p-6 text-background md:p-8">
+            {stats.map((s, index) => (
+              <div 
+                key={s.label} 
+                className={cn(
+                  "flex flex-col justify-between",
+                  // Ajout de séparateurs subtils en desktop entre les colonnes
+                  index !== stats.length - 1 && "md:border-r md:border-white/10 md:pr-6"
+                )}
+              >
+                <dt className="order-2 mt-2 font-mono text-xs uppercase tracking-wider text-background/70">{s.label}</dt>
+                <dd className="order-1 whitespace-nowrap text-3xl font-extrabold tracking-tight lg:text-4xl text-background">
+                  {s.value}
+                </dd>
               </div>
             ))}
           </dl>
+
         </div>
       </div>
     </section>
