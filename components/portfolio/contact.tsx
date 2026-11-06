@@ -12,12 +12,13 @@ export function Contact() {
           
           <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10">
             
-            {/* Colonne de gauche : Emplacement visuel / photo (5 colonnes) */}
+            {/* Colonne de gauche : Ton image contact.png intégrée ici */}
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background/5 border border-white/10 md:col-span-5 md:aspect-square">
-              {/* Tu pourras remplacer ou ajouter ton image ici */}
-              <div className="flex h-full w-full items-center justify-center font-mono text-xs uppercase tracking-wider text-background/60">
-                [ Votre Visuel / Photo ]
-              </div>
+              <img 
+                src="/images/contact.png" 
+                alt="Illustration collaboration data" 
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+              />
             </div>
 
             {/* Colonne de droite : Contenu et CTA (7 colonnes) */}
