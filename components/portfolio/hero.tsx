@@ -14,13 +14,6 @@ const domains = [
   { label: 'Qualité & Gouvernance', icon: ShieldCheck, tone: 'bg-brand-teal' },
 ]
 
-const stats = [
-  { value: '3', label: 'Institutions publiques & financières' },
-  { value: '+10', label: 'Projets data en ligne' },
-  { value: 'Bac+5', label: 'Statistique & Data' },
-  { value: 'ETL · ELT', label: 'Pipelines testés & documentés' },
-]
-
 function DomainPills({ className }: { className?: string }) {
   return (
     <ul className={cn('flex flex-wrap justify-center gap-2.5', className)} aria-label="Domaines d'expertise">
@@ -82,9 +75,9 @@ export function Hero() {
             <DomainPills className="flex-nowrap" />
           </div>
 
-          {/* Cadre de l'image épuré et harmonisé avec l'UI */}
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-foreground p-3 md:rounded-[2.5rem] md:p-4 shadow-2xl">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-black/20 sm:aspect-[16/9] md:aspect-[21/9]">
+          {/* Image intégrée proprement sans bordure extérieure */}
+          <div className="relative overflow-hidden rounded-3xl bg-transparent md:rounded-[2.5rem] shadow-2xl">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl md:rounded-[2.5rem] bg-black/20 sm:aspect-[16/9] md:aspect-[21/9]">
               <Image
                 src={heroWorkspace}
                 alt="Poste de travail avec des tableaux de bord de données à l'écran"
@@ -96,24 +89,6 @@ export function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
-
-          {/* Barre de KPI positionnée en dessous avec des arrondis homogènes (md:rounded-[2.5rem]) */}
-          <dl className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 rounded-3xl border border-white/10 bg-foreground p-6 text-background md:rounded-[2.5rem] md:p-8 shadow-xl">
-            {stats.map((s, index) => (
-              <div 
-                key={s.label} 
-                className={cn(
-                  "flex flex-col justify-between",
-                  index !== stats.length - 1 && "md:border-r md:border-white/10 md:pr-6"
-                )}
-              >
-                <dt className="order-2 mt-2 font-mono text-xs uppercase tracking-wider text-background/70">{s.label}</dt>
-                <dd className="order-1 whitespace-nowrap text-3xl font-extrabold tracking-tight lg:text-4xl text-background">
-                  {s.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
 
         </div>
       </div>
