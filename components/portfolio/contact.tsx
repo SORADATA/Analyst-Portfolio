@@ -17,27 +17,27 @@ export function Contact() {
           <div className="relative z-10 grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-10">
             
             {/* Colonne de gauche : Élément visuel abstrait dynamique (lignes de flux de données lumineuses) */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-black/40 border border-white/10 p-6 md:col-span-5 md:aspect-square flex flex-col justify-between shadow-inner">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-background/10 border border-background/20 p-6 md:col-span-5 md:aspect-square flex flex-col justify-between shadow-inner backdrop-blur-sm">
               
               {/* Simulation de flux lumineux et de courbes de données stylisées */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.indigo.500/15),theme(colors.accent/15))] opacity-75 blur-2xl pointer-events-none" />
               
               <div className="relative z-10 flex items-center justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-background/60">Pipeline Status</span>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-background/80">Pipeline Status</span>
                 <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>
 
               <div className="relative z-10 space-y-3">
-                <div className="h-1.5 w-3/4 rounded-full bg-white/20 overflow-hidden">
+                <div className="h-1.5 w-3/4 rounded-full bg-background/20 overflow-hidden">
                   <div className="h-full w-2/3 rounded-full bg-accent" />
                 </div>
-                <div className="h-1.5 w-1/2 rounded-full bg-white/15" />
-                <p className="font-mono text-xs text-background/70 pt-2">
-                   End-to-end data processing active.
+                <div className="h-1.5 w-1/2 rounded-full bg-background/15" />
+                <p className="font-mono text-xs text-background/80 pt-2">
+                  > End-to-end data processing active.
                 </p>
               </div>
 
-              <div className="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[11px] text-background/60">
+              <div className="relative z-10 pt-4 border-t border-background/20 flex items-center justify-between font-mono text-[11px] text-background/80">
                 <span>LATENCY: 12ms</span>
                 <span className="text-accent font-semibold">SECURE</span>
               </div>
