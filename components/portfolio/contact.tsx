@@ -33,7 +33,7 @@ export function Contact() {
                 </div>
                 <div className="h-1.5 w-1/2 rounded-full bg-background/15" />
                 <p className="font-mono text-xs text-background/80 pt-2">
-                  > End-to-end data processing active.
+                  {"> End-to-end data processing active."}
                 </p>
               </div>
 
