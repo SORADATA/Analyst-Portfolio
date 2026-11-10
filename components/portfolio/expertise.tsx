@@ -1,15 +1,7 @@
-import { BarChart3, BrainCircuit, Database, LineChart } from 'lucide-react'
 import { expertise } from '@/lib/portfolio-data'
-import { cn } from '@/lib/utils'
-import { SectionHeading } from './section-heading'
+import { expertiseVisuals } from './expertise-visuals'
 import { MethodSteps } from './method-steps'
-
-const visuals = [
-  { icon: Database, tone: 'bg-brand-indigo' },
-  { icon: LineChart, tone: 'bg-accent' },
-  { icon: BrainCircuit, tone: 'bg-brand-teal' },
-  { icon: BarChart3, tone: 'bg-foreground' },
-]
+import { SectionHeading } from './section-heading'
 
 export function Expertise() {
   return (
@@ -25,41 +17,37 @@ export function Expertise() {
 
         <ul className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {expertise.map((item, i) => {
-            const { icon: Icon, tone } = visuals[i % visuals.length]
+            const Visual = expertiseVisuals[i % expertiseVisuals.length]
             return (
               <li
                 key={item.id}
-                className="group flex flex-col rounded-2xl bg-muted p-7 transition-colors hover:bg-foreground hover:text-background"
+                className="group flex flex-col rounded-2xl bg-muted p-3 transition-colors hover:bg-foreground hover:text-background"
               >
-                <div className="flex items-center justify-between">
-                  <span className={cn('flex size-11 items-center justify-center rounded-lg text-white', tone)} aria-hidden="true">
-                    <Icon className="size-5" />
-                  </span>
-                  <span className="font-mono text-xs text-muted-foreground group-hover:text-background/60">{item.id}</span>
+                <div className="aspect-[16/9] overflow-hidden rounded-xl bg-[#0a0b26] ring-1 ring-white/10">
+                  <Visual />
                 </div>
-                <h3 className="mt-8 text-xl font-semibold tracking-tight">{item.title}</h3>
-                <p className="mt-3 text-pretty text-[15px] leading-relaxed text-muted-foreground group-hover:text-background/70">
-                  {item.description}
-                </p>
-                <ul className="mt-auto flex flex-wrap gap-1.5 pt-8" aria-label={`Outils ${item.title}`}>
-                  {item.tools.map((tool) => (
-                    <li
-                      key={tool}
-                      className="rounded-sm bg-background px-2 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-foreground"
-                    >
-                      {tool}
-                    </li>
-                  ))}
-                </ul>
+                <div className="flex flex-1 flex-col px-4 pb-4 pt-5">
+                  <h3 className="text-xl font-semibold tracking-tight">{item.title}</h3>
+                  <p className="mt-3 text-pretty text-[15px] leading-relaxed text-muted-foreground group-hover:text-background/70">
+                    {item.description}
+                  </p>
+                  <ul className="mt-auto flex flex-wrap gap-1.5 pt-8" aria-label={`Outils ${item.title}`}>
+                    {item.tools.map((tool) => (
+                      <li
+                        key={tool}
+                        className="rounded-sm bg-background px-2 py-1 font-mono text-[11px] font-medium uppercase tracking-wide text-foreground"
+                      >
+                        {tool}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </li>
             )
           })}
         </ul>
 
-        <div className="mt-24 grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <SectionHeading id="methode-title" label="Méthode" title="Trois étapes, zéro approximation" />
-          </div>
+        <div className="mt-24">
           <MethodSteps />
         </div>
       </div>

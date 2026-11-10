@@ -1,0 +1,13 @@
+Dépose ici les logos des institutions, avec exactement ces noms :
+
+  mef.png
+  banque-de-france.png
+  cdef.png
+  universite-de-lorraine.png
+  universite-d-angers.png
+
+Si ton fichier est un SVG (ou un autre nom), ouvre components/portfolio/trust-strip.tsx
+et change le nom dans la liste "institutions" en haut du fichier (ex. 'logos/mef.svg').
+
+Conseils : fond transparent de préférence, logo recadré au plus près, largeur d'au moins 400 px.
+Tant qu'un logo est absent, le nom de l'institution s'affiche à la place.

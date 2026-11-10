@@ -2,6 +2,7 @@ import { ArrowUpRight, Code2 } from 'lucide-react'
 import { profile, projects, type Project } from '@/lib/portfolio-data'
 import { cn } from '@/lib/utils'
 import { CtaLink } from './cta-link'
+import { FrontierVisual } from './expertise-visuals'
 import { SectionHeading } from './section-heading'
 
 function ProjectLinks({ project, inverted }: { project: Project; inverted?: boolean }) {
@@ -92,6 +93,10 @@ export function Projects() {
               </div>
             </div>
             <div className="flex flex-col justify-end gap-3 border-t border-background/10 p-8 md:p-12 lg:col-span-5 lg:border-l lg:border-t-0">
+              <div className="mb-auto aspect-[16/9] overflow-hidden rounded-xl bg-[#0a0b26] ring-1 ring-white/10">
+                <FrontierVisual />
+              </div>
+              <div className="h-3" aria-hidden="true" />
               {[
                 ['Régimes de marché', 'K-Means'],
                 ['Prédiction', 'XGBoost · LightGBM'],

@@ -1,26 +1,7 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @media (prefers-color-scheme: light) {
-      .background { fill: black; }
-      .foreground { fill: white; }
-    }
-    @media (prefers-color-scheme: dark) {
-      .background { fill: white; }
-      .foreground { fill: black; }
-    }
-  </style>
-  <g clip-path="url(#clip0_7960_43945)">
-    <rect class="background" width="180" height="180" rx="37" />
-    <g style="transform: scale(95%); transform-origin: center">
-      <path class="foreground"
-        d="M101.141 53H136.632C151.023 53 162.689 64.6662 162.689 79.0573V112.904H148.112V79.0573C148.112 78.7105 148.098 78.3662 148.072 78.0251L112.581 112.898C112.701 112.902 112.821 112.904 112.941 112.904H148.112V126.672H112.941C98.5504 126.672 86.5638 114.891 86.5638 100.5V66.7434H101.141V100.5C101.141 101.15 101.191 101.792 101.289 102.422L137.56 66.7816C137.255 66.7563 136.945 66.7434 136.632 66.7434H101.141V53Z" />
-      <path class="foreground"
-        d="M65.2926 124.136L14 66.7372H34.6355L64.7495 100.436V66.7372H80.1365V118.47C80.1365 126.278 70.4953 129.958 65.2926 124.136Z" />
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" rx="40" fill="#0f1231"/>
+  <g transform="translate(21.28 135.98) scale(0.16842 -0.16842)">
+    <path fill="#ffffff" d="M269 -12Q179 -12 112.5 30.5Q46 73 22 145L132 197Q153 153 189.0 128.0Q225 103 269 103Q301 103 318.0 116.0Q335 129 335 152Q335 164 329.0 172.5Q323 181 311.0 188.0Q299 195 281 200L188 226Q121 245 85.0 287.5Q49 330 49 388Q49 439 75.0 477.0Q101 515 148.0 536.5Q195 558 256 558Q336 558 396.5 520.5Q457 483 482 415L371 363Q359 397 327.5 417.5Q296 438 256 438Q227 438 210.5 426.0Q194 414 194 393Q194 382 200.0 373.0Q206 364 219.5 357.0Q233 350 253 344L340 318Q408 298 444.0 257.5Q480 217 480 158Q480 107 453.5 69.0Q427 31 380.0 9.5Q333 -12 269 -12Z"/>
+    <path fill="#a78bfa" transform="translate(515 0)" d="M129 0V150H279V0Z"/>
   </g>
-  <defs>
-    <clipPath id="clip0_7960_43945">
-      <rect width="180" height="180" fill="white" />
-    </clipPath>
-  </defs>
 </svg>
