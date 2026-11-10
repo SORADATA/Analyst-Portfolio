@@ -12,6 +12,14 @@ const plexMono = IBM_Plex_Mono({
 })
 
 const siteUrl = 'https://soradata.github.io/Analyst-Portfolio/'
+// Sur GitHub Pages, le site vit dans un sous-dossier : les icônes doivent en tenir compte
+const basePath = process.env.GITHUB_PAGES === 'true' ? '/Analyst-Portfolio' : ''
+const shareImage = {
+  url: `${siteUrl}og.png`,
+  width: 1200,
+  height: 630,
+  alt: 'Moussa Sissoko, Data Analyst & Analytics Engineer : transformer la donnée en décisions fiables',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -42,14 +50,22 @@ export const metadata: Metadata = {
     url: siteUrl,
     type: 'website',
     locale: 'fr_FR',
+    siteName: 'Moussa Sissoko',
+    images: [shareImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Moussa SISSOKO | Data Analyst & Analytics Engineer',
+    description:
+      'Pipelines de données, modèles prédictifs et dashboards pour piloter la performance et éclairer la décision.',
+    images: [shareImage.url],
   },
   icons: {
     icon: [
-      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
-      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: `${basePath}/icon.svg`, type: 'image/svg+xml' },
+      { url: `${basePath}/icon-light-32x32.png`, sizes: '32x32', type: 'image/png' },
     ],
-    apple: '/apple-icon.png',
+    apple: `${basePath}/apple-icon.png`,
   },
 }
 

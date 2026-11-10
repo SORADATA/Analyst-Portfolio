@@ -47,10 +47,10 @@ export const experiences = [
     period: '2025 — Août 2026',
     location: 'Paris',
     highlights: [
-      'Ai conçu et mis en production plus de 4 pipelines de données de bout en bout, orchestrés avec Apache Airflow, de la collecte multi-sources (API, applications métiers, tableurs collaboratifs) jusqu’à la base décisionnelle.',
-      'Ai assuré le suivi, la maintenance et l’évolution des pipelines en production : correctifs, gestion des partitions, évolutions de configuration et fiabilisation continue.',
-      'Ai structuré les données en modèles SQL versionnés avec Git, couverts par des contrôles qualité automatisés et une documentation maintenue à jour.',
-      'Ai contribué à l’architecture cible (traitement, base décisionnelle PostgreSQL, datavisualisation) et livré des tableaux de bord de pilotage aux équipes métiers.',
+      'Conception et mise en production de plus de 4 pipelines de données de bout en bout, orchestrés avec Apache Airflow, de la collecte multi-sources (API, applications métiers, tableurs collaboratifs) jusqu’à la base décisionnelle.',
+      'Suivi, maintenance et évolution des pipelines en production : correctifs, gestion des partitions, évolutions de configuration et fiabilisation continue.',
+      'Structuration des données en modèles SQL versionnés avec Git, couverts par des contrôles qualité automatisés et une documentation maintenue à jour.',
+      'Contribution à l’architecture cible (traitement, base décisionnelle PostgreSQL, datavisualisation) et livraison de tableaux de bord de pilotage aux équipes métiers.',
     ],
   },
   {
@@ -60,9 +60,9 @@ export const experiences = [
     period: 'Avr. — Août 2025',
     location: 'France',
     highlights: [
-      'Ai développé une application R Shiny de text mining pour exploiter des corpus de documents bancaires (exploration, scoring de sentiment, synthèse d’insights).',
-      'Ai mené des analyses statistiques et macroéconomiques pour appuyer les études internes et éclairer la décision.',
-      'Ai structuré et documenté les traitements pour les rendre reproductibles par les équipes.',
+      'Développement d’une application R Shiny de text mining pour exploiter des corpus de documents bancaires (exploration, scoring de sentiment, synthèse d’insights).',
+      'Analyses statistiques et macroéconomiques pour appuyer les études internes et éclairer la décision.',
+      'Structuration et documentation des traitements pour les rendre reproductibles par les équipes.',
     ],
   },
   {
@@ -72,8 +72,8 @@ export const experiences = [
     period: 'Été 2023',
     location: 'Angers',
     highlights: [
-      'Ai assuré le pilotage financier via des tableaux de bord Power BI.',
-      'Ai construit des modèles budgétaires sous Excel et fiabilisé les flux comptables.',
+      'Pilotage financier via des tableaux de bord Power BI.',
+      'Construction de modèles budgétaires sous Excel et fiabilisation des flux comptables.',
     ],
   },
 ]
