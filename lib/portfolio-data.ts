@@ -5,7 +5,7 @@ export const profile = {
   email: 'moussa.sissoko.contact@gmail.com',
   github: 'https://github.com/SORADATA',
   linkedIn:'https://www.linkedin.com/in/moussasissoko6/',
-  cv: 'https://drive.google.com/file/d/1tkji0v-oDzgJ8LT-O-jwV8kVVsWjH8yq/view?usp=sharing',
+  cv:'https://drive.google.com/file/d/128cMjV8Vb_o_9RGXOdzaJyxRSpey7mW8/view?usp=sharing',
   location: 'Paris, France',
 }
 
